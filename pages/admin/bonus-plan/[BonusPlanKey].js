@@ -85,9 +85,7 @@ const EditBonusPlan = (props) => {
     const formik = useFormik({
         initialValues: {
             Sweepstakes:
-                props.data.bonusPlans.data && props.data.bonusPlans.data.Sweepstakes.length > 0
-                    ? SweepstakesData
-                    : [],
+                props.data.bonusPlans.data && props.data.bonusPlans.data.Sweepstakes.length > 0 ? SweepstakesData : [],
             BonusPlanName:
                 props.data.bonusPlans.data && props.data.bonusPlans.data.BonusPlanName
                     ? props.data.bonusPlans.data.BonusPlanName
@@ -113,23 +111,20 @@ const EditBonusPlan = (props) => {
             Comments: Yup.string(),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/bonus-plan/${props.data.bonusPlans.data.BonusPlanKey}`,
-                {
-                    body: JSON.stringify({
-                        BonusPlanName: values.BonusPlanName,
-                        Comments: values.Comments,
-                        Sweepstakes: values.Sweepstakes,
-                        BonusEntries: values.BonusEntries,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/bonus-plan/${props.data.bonusPlans.data.BonusPlanKey}`, {
+                body: JSON.stringify({
+                    BonusPlanName: values.BonusPlanName,
+                    Comments: values.Comments,
+                    Sweepstakes: values.Sweepstakes,
+                    BonusEntries: values.BonusEntries,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
 
             if (res.ok && result) {
@@ -191,50 +186,37 @@ const EditBonusPlan = (props) => {
                                     <Label>Sweepstakes:</Label>
                                     <div className="ms-Grid-row">
                                         <div className="ms-Grid-col ms-sm10">
-                                            <Stack
-                                                wrap
-                                                horizontal
-                                                styles={stackItemStyles}
-                                                tokens={stackTokens}>
+                                            <Stack wrap horizontal styles={stackItemStyles} tokens={stackTokens}>
                                                 {props.data.sweepstakes.data < 1
                                                     ? ''
-                                                    : props.data.sweepstakes.data.map(
-                                                          (sweepstakes) => {
-                                                              const sa =
-                                                                  props.data.bonusPlans.data &&
-                                                                  props.data.bonusPlans.data
-                                                                      .Sweepstakes
-                                                                      ? props.data.bonusPlans.data.Sweepstakes.find(
-                                                                            (value) => {
-                                                                                if (
-                                                                                    value.SweepstakesKey ===
-                                                                                    sweepstakes.SweepstakesKey
-                                                                                ) {
-                                                                                    return true;
-                                                                                }
-                                                                                return false;
+                                                    : props.data.sweepstakes.data.map((sweepstakes) => {
+                                                          const sa =
+                                                              props.data.bonusPlans.data &&
+                                                              props.data.bonusPlans.data.Sweepstakes
+                                                                  ? props.data.bonusPlans.data.Sweepstakes.find(
+                                                                        (value) => {
+                                                                            if (
+                                                                                value.SweepstakesKey ===
+                                                                                sweepstakes.SweepstakesKey
+                                                                            ) {
+                                                                                return true;
                                                                             }
-                                                                        )
-                                                                      : '';
+                                                                            return false;
+                                                                        }
+                                                                    )
+                                                                  : '';
 
-                                                              return (
-                                                                  <Checkbox
-                                                                      grow={3}
-                                                                      key={
-                                                                          sweepstakes.SweepstakesKey
-                                                                      }
-                                                                      name={
-                                                                          sweepstakes.SweepstakesKey
-                                                                      }
-                                                                      label={
-                                                                          sweepstakes.SweepstakesName
-                                                                      }
-                                                                      defaultChecked={sa}
-                                                                      onChange={_onChange}
-                                                                  />
-                                                              );
-                                                          }
-                                                      )}
+                                                          return (
+                                                              <Checkbox
+                                                                  grow={3}
+                                                                  key={sweepstakes.SweepstakesKey}
+                                                                  name={sweepstakes.SweepstakesKey}
+                                                                  label={sweepstakes.SweepstakesName}
+                                                                  defaultChecked={sa}
+                                                                  onChange={_onChange}
+                                                              />
+                                                          );
+                                                      })}
                                             </Stack>
                                         </div>
                                     </div>
@@ -290,23 +272,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[0].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[0].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[0].maxBonus + 1;
-                                                formik.values.BonusEntries[0].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[0].maxBonus + 1;
+                                                formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[0].maxBonus - 1;
-                                                formik.values.BonusEntries[0].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[0].maxBonus - 1;
+                                                formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -318,23 +295,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[1].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[1].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[1].maxBonus + 1;
-                                                formik.values.BonusEntries[1].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[1].maxBonus + 1;
+                                                formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[1].maxBonus - 1;
-                                                formik.values.BonusEntries[1].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[1].maxBonus - 1;
+                                                formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -346,23 +318,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[2].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[2].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[2].maxBonus + 1;
-                                                formik.values.BonusEntries[2].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[2].maxBonus + 1;
+                                                formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[2].maxBonus - 1;
-                                                formik.values.BonusEntries[2].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[2].maxBonus - 1;
+                                                formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -385,23 +352,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[3].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[3].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[3].maxBonus + 1;
-                                                formik.values.BonusEntries[3].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[3].maxBonus + 1;
+                                                formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[3].maxBonus - 1;
-                                                formik.values.BonusEntries[3].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[3].maxBonus - 1;
+                                                formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -413,23 +375,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[4].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[4].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[4].maxBonus + 1;
-                                                formik.values.BonusEntries[4].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[4].maxBonus + 1;
+                                                formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[4].maxBonus - 1;
-                                                formik.values.BonusEntries[4].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[4].maxBonus - 1;
+                                                formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -441,23 +398,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[5].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[5].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[5].maxBonus + 1;
-                                                formik.values.BonusEntries[5].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[5].maxBonus + 1;
+                                                formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[5].maxBonus - 1;
-                                                formik.values.BonusEntries[5].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[5].maxBonus - 1;
+                                                formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -480,23 +432,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[6].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[6].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[6].maxBonus + 1;
-                                                formik.values.BonusEntries[6].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[6].maxBonus + 1;
+                                                formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[6].maxBonus - 1;
-                                                formik.values.BonusEntries[6].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[6].maxBonus - 1;
+                                                formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -508,23 +455,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[7].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[7].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[7].maxBonus + 1;
-                                                formik.values.BonusEntries[7].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[7].maxBonus + 1;
+                                                formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[7].maxBonus - 1;
-                                                formik.values.BonusEntries[7].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[7].maxBonus - 1;
+                                                formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -536,23 +478,18 @@ const EditBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[8].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[8].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[8].maxBonus + 1;
-                                                formik.values.BonusEntries[8].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[8].maxBonus + 1;
+                                                formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[8].maxBonus - 1;
-                                                formik.values.BonusEntries[8].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[8].maxBonus - 1;
+                                                formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -580,9 +517,7 @@ const EditBonusPlan = (props) => {
                                             'Update Bonus Plan'
                                         )
                                     }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>
@@ -601,15 +536,12 @@ export async function getServerSideProps(context) {
     });
 
     const { BonusPlanKey } = context.query;
-    let bonusPlans = await fetch(
-        `/api/bonus-plan/${BonusPlanKey}`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let bonusPlans = await fetch(`/api/bonus-plan/${BonusPlanKey}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     bonusPlans = await bonusPlans.json();
 

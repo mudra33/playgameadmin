@@ -44,17 +44,9 @@ const ViewEditCashier = (props) => {
     const formik = useFormik({
         initialValues: {
             UserFirstName:
-                props.cashier.data && props.cashier.data.UserFirstName
-                    ? props.cashier.data.UserFirstName
-                    : '',
-            UserLastName:
-                props.cashier.data && props.cashier.data.UserLastName
-                    ? props.cashier.data.UserLastName
-                    : '',
-            UserPhone:
-                props.cashier.data && props.cashier.data.UserPhone
-                    ? props.cashier.data.UserPhone
-                    : '',
+                props.cashier.data && props.cashier.data.UserFirstName ? props.cashier.data.UserFirstName : '',
+            UserLastName: props.cashier.data && props.cashier.data.UserLastName ? props.cashier.data.UserLastName : '',
+            UserPhone: props.cashier.data && props.cashier.data.UserPhone ? props.cashier.data.UserPhone : '',
             UserPassword: '',
         },
         validationSchema: Yup.object({
@@ -84,25 +76,22 @@ const ViewEditCashier = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/UserKey/${props.cashier.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserPassword: values.UserPassword,
-                        ForcePasswordChange: selectedForcePasswordChange,
-                        UserBlocked: selectedUserBlocked,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/UserKey/${props.cashier.data.UserKey}`, {
+                body: JSON.stringify({
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserPassword: values.UserPassword,
+                    ForcePasswordChange: selectedForcePasswordChange,
+                    UserBlocked: selectedUserBlocked,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 setNotification({ message: result.message, messageBarType: 4 });
@@ -135,9 +124,7 @@ const ViewEditCashier = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -261,10 +248,7 @@ const ViewEditCashier = (props) => {
 
                             <div className="ms-Grid-row">
                                 <div className="ms-Grid-col ms-sm6">
-                                    <DefaultButton
-                                        text="Reset"
-                                        onClick={() => formik.resetForm()}
-                                    />
+                                    <DefaultButton text="Reset" onClick={() => formik.resetForm()} />
                                 </div>
 
                                 <div className="ms-Grid-col ms-sm6">
@@ -292,9 +276,7 @@ const ViewEditCashier = (props) => {
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
 
-    const res = await fetch(
-        `/api/store-users/${UserKey}?UserRole=Cashier`
-    );
+    const res = await fetch(`/api/store-users/${UserKey}?UserRole=Cashier`);
     const cashier = await res.json();
     const token = await jwt.getToken({
         req: context.req,

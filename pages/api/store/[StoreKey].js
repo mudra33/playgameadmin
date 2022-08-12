@@ -25,11 +25,7 @@ const handler = async (req, res) => {
                             const BonusPlans = await trx
                                 .select('BonusPlans.*')
                                 .from('StoreBonusPlans')
-                                .innerJoin(
-                                    'BonusPlans',
-                                    'StoreBonusPlans.BonusPlanKey',
-                                    'BonusPlans.BonusPlanKey'
-                                )
+                                .innerJoin('BonusPlans', 'StoreBonusPlans.BonusPlanKey', 'BonusPlans.BonusPlanKey')
                                 .where('StoreBonusPlans.StoreKey', '=', req.query.StoreKey);
 
                             data[0].BonusPlans = JSON.parse(JSON.stringify(BonusPlans));
@@ -44,9 +40,7 @@ const handler = async (req, res) => {
                                 )
                                 .where('StorePercentagePlans.StoreKey', '=', req.query.StoreKey);
 
-                            data[0].StorePercentagePlans = JSON.parse(
-                                JSON.stringify(StorePercentagePlans)
-                            );
+                            data[0].StorePercentagePlans = JSON.parse(JSON.stringify(StorePercentagePlans));
 
                             const transaction = await trx
                                 .select('Transactions.*')
@@ -152,9 +146,7 @@ const handler = async (req, res) => {
             const data = await req.db('Stores').where({ StoreKey: req.query.StoreKey }).del();
 
             if (data < 1) {
-                return res
-                    .status(404)
-                    .json({ message: `Store not found with StoreKey- ${req.query.StoreKey}` });
+                return res.status(404).json({ message: `Store not found with StoreKey- ${req.query.StoreKey}` });
             }
 
             return res.status(200).json({ message: 'Deleted Successfully' });

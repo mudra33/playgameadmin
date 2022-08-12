@@ -89,14 +89,12 @@ const Thankyou = () => {
 
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Name:&nbsp;</Label>
                             <Text styles={textStyles}>Xxxxx Xxxxxxxx</Text>
                         </div>
 
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Phone Number:&nbsp;</Label>
                             <Text styles={textStyles}>XXX-XXX-XXXX</Text>
                         </div>
@@ -115,16 +113,11 @@ const Thankyou = () => {
                     Please See An Agent For Approval
                 </h2>
                 <Text styles={labelFieldStyles}>
-                    After approval, your request will be processed and you will receive a text when
-                    it has been completed. Please allow up to 30 minutes for the process to
-                    complete.
+                    After approval, your request will be processed and you will receive a text when it has been
+                    completed. Please allow up to 30 minutes for the process to complete.
                 </Text>
 
-                <DefaultButton
-                    text="Exit"
-                    onClick={() => router.back()}
-                    styles={exitButtonStyles}
-                />
+                <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
             </form>
         </Layout>
     );

@@ -136,9 +136,7 @@ const AddManager = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -250,16 +248,8 @@ const AddManager = (props) => {
                             <div className="ms-Grid-col ms-sm12">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Submit'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

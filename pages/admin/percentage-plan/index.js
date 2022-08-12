@@ -50,15 +50,12 @@ const PercentagePlanListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/percentage-plan/${item.PercentagePlanKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/percentage-plan/${item.PercentagePlanKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let percentagePlan = await fetchData();
                                         setPercentagePlanData(percentagePlan.data);
                                     },
@@ -118,15 +115,12 @@ const PercentagePlanListing = (props) => {
 };
 
 async function fetchData() {
-    let percentagePlan = await fetch(
-        `/api/percentage-plan`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let percentagePlan = await fetch(`/api/percentage-plan`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     percentagePlan = await percentagePlan.json();
     return percentagePlan;

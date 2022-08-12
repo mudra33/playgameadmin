@@ -30,9 +30,7 @@ const handler = async (req, res) => {
                         .catch(trx.rollback);
                 })
                 .then((data) => {
-                    return res
-                        .status(201)
-                        .send({ message: 'User Found with given UserPhone', data });
+                    return res.status(201).send({ message: 'User Found with given UserPhone', data });
                 })
                 .catch((error) => {
                     return res.status(500).send({ message: 'Oops! Something went wrong!', error });

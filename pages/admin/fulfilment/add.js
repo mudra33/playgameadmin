@@ -214,8 +214,7 @@ const AddFulfilment = (props) => {
                                         label="Last Name"
                                         {...formik.getFieldProps('UserLastName')}
                                         errorMessage={
-                                            formik.touched.UserLastName &&
-                                            formik.errors.UserLastName
+                                            formik.touched.UserLastName && formik.errors.UserLastName
                                                 ? formik.errors.UserLastName
                                                 : null
                                         }
@@ -288,16 +287,8 @@ const AddFulfilment = (props) => {
                             <div className="ms-Grid-col ms-sm6">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Submit'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

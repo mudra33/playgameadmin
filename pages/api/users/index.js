@@ -77,11 +77,7 @@ const handler = async (req, res) => {
                 });
         }
 
-        if (
-            req.method === 'GET' &&
-            req.query.UserRole !== 'Owner' &&
-            req.query.UserRole !== 'Cashier'
-        ) {
+        if (req.method === 'GET' && req.query.UserRole !== 'Owner' && req.query.UserRole !== 'Cashier') {
             const UserKey = req.query.UserKey ? req.query.UserKey : '';
 
             const data = await req

@@ -20,10 +20,7 @@ export default function PageHeader(props) {
 
                 <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6">
                     {props.button && props.button.text ? (
-                        <PrimaryButton
-                            text={props.button.text}
-                            onClick={() => router.push(props.button.link)}
-                        />
+                        <PrimaryButton text={props.button.text} onClick={() => router.push(props.button.link)} />
                     ) : (
                         ''
                     )}

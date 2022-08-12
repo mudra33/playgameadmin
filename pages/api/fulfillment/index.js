@@ -30,11 +30,9 @@ const handler = async (req, res) => {
                         .into('Users')
                         .transacting(trx)
                         .then(async (UserKey) => {
-                            let subquery = await trx('Companies')
-                                .select('CompanyName', 'CompanyKey')
-                                .where({
-                                    CompanyName: req.body.CompanyNames,
-                                });
+                            let subquery = await trx('Companies').select('CompanyName', 'CompanyKey').where({
+                                CompanyName: req.body.CompanyNames,
+                            });
 
                             subquery = JSON.parse(JSON.stringify(subquery));
 
@@ -97,9 +95,7 @@ const handler = async (req, res) => {
                         .catch(trx.rollback);
                 })
                 .then((inserts) => {
-                    return res
-                        .status(201)
-                        .send({ message: 'Registered Successfully.', data: inserts[0] });
+                    return res.status(201).send({ message: 'Registered Successfully.', data: inserts[0] });
                 })
                 .catch((error) => {
                     return res.status(500).send({ message: 'Oops! Something went wrong!', error });

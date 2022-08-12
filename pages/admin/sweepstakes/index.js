@@ -50,15 +50,12 @@ const SweepstakesListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/company-sweepstakes/${item.CompanySweepstakesKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/company-sweepstakes/${item.CompanySweepstakesKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let sweepstakes = await fetchData();
                                         setSweepstakesData(sweepstakes.data);
                                     },
@@ -119,15 +116,12 @@ const SweepstakesListing = (props) => {
 };
 
 async function fetchData() {
-    let sweepstakes = await fetch(
-        `/api/company-sweepstakes`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let sweepstakes = await fetch(`/api/company-sweepstakes`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     sweepstakes = await sweepstakes.json();
 
@@ -135,15 +129,12 @@ async function fetchData() {
 }
 
 export async function getServerSideProps() {
-    let sweepstakes = await fetch(
-        `/api/company-sweepstakes`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let sweepstakes = await fetch(`/api/company-sweepstakes`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     sweepstakes = await sweepstakes.json();
 

@@ -22,9 +22,7 @@ const handler = async (req, res) => {
                 .leftJoin('Stores', 'Stores.StoreKey', 'StoreUsers.StoreKey');
 
             if (data && data.length < 1)
-                return res
-                    .status(404)
-                    .send({ message: `User not found with Phone - ${req.body.UserPhone}` });
+                return res.status(404).send({ message: `User not found with Phone - ${req.body.UserPhone}` });
 
             return res.status(200).send(data[0]);
         }

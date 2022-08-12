@@ -35,20 +35,11 @@ export default function Layout({ children, title }) {
                 <meta name="twitter:card" content="summary_large_image" />
 
                 <meta charSet="utf-8" />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                    key="viewport"
-                />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
             </Head>
 
             {loading ? (
-                <Spinner
-                    label="Loading..."
-                    ariaLive="assertive"
-                    labelPosition="left"
-                    size={SpinnerSize.large}
-                />
+                <Spinner label="Loading..." ariaLive="assertive" labelPosition="left" size={SpinnerSize.large} />
             ) : (
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">

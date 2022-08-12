@@ -142,9 +142,7 @@ const AddOwner = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -156,11 +154,7 @@ const AddOwner = (props) => {
                                     style={{
                                         marginLeft: '10px',
                                     }}>
-                                    <Dropdown
-                                        options={StoreName}
-                                        onChange={onDropdownChange}
-                                        label="Store Name:"
-                                    />
+                                    <Dropdown options={StoreName} onChange={onDropdownChange} label="Store Name:" />
                                 </div>
                             </div>
                         </div>
@@ -241,16 +235,8 @@ const AddOwner = (props) => {
                             <div className="ms-Grid-col ms-sm6">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Submit'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

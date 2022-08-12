@@ -117,20 +117,17 @@ const Home = () => {
                 }}>
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Store Name:&nbsp;</Label>
                             <Text styles={textStyles}> Xxxxxxxx</Text>
                         </div>
 
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Store Id:&nbsp;</Label>
                             <Text styles={textStyles}>XXX</Text>
                         </div>
 
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Store Credit:&nbsp;</Label>
                             <Text styles={textStyles}>$xxxxxxx</Text>
                         </div>
@@ -172,12 +169,7 @@ const Home = () => {
                         </div>
 
                         <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
-                            <Dropdown
-                                placeholder="View:"
-                                autoComplete="on"
-                                options={options}
-                                styles={dropdownStyles}
-                            />
+                            <Dropdown placeholder="View:" autoComplete="on" options={options} styles={dropdownStyles} />
                         </div>
 
                         <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">

@@ -62,14 +62,12 @@ const handler = async (req, res) => {
                         })
                         .transacting(trx)
                         .then(async (UserKey) => {
-                            await trx('StoreUsers')
-                                .where('UserKey', '=', req.query.UserKey)
-                                .update({
-                                    StoreKey: req.body.StoreKey,
-                                    UserKey_LastUpdatedBy: req.body.UserKey_LastUpdatedBy,
-                                    UserKey_CreatedBy: req.body.UserKey_CreatedBy,
-                                    StoreUsersLastUpdatedDateTime: new Date(),
-                                });
+                            await trx('StoreUsers').where('UserKey', '=', req.query.UserKey).update({
+                                StoreKey: req.body.StoreKey,
+                                UserKey_LastUpdatedBy: req.body.UserKey_LastUpdatedBy,
+                                UserKey_CreatedBy: req.body.UserKey_CreatedBy,
+                                StoreUsersLastUpdatedDateTime: new Date(),
+                            });
                             return { UserKey };
                         })
 

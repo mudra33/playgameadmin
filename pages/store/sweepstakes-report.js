@@ -1,14 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout/Post';
-import {
-    Dropdown,
-    DatePicker,
-    PrimaryButton,
-    Label,
-    Text,
-    DefaultButton,
-    Checkbox,
-} from '@fluentui/react';
+import { Dropdown, DatePicker, PrimaryButton, Label, Text, DefaultButton, Checkbox } from '@fluentui/react';
 const sweepstakesReports = () => {
     const labelStyles = {
         root: {
@@ -249,9 +241,7 @@ const sweepstakesReports = () => {
                             <DatePicker label="From:" placeholder="Date" styles={getDateStyles} />
                         </div>
 
-                        <div
-                            className="ms-Grid-col ms-sm6 ms-md6 ms-lg6"
-                            style={{ paddingTop: '27px' }}>
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6" style={{ paddingTop: '27px' }}>
                             <Dropdown styles={dropdownStyles} placeholder="Time" options={time} />
                         </div>
                     </div>
@@ -261,9 +251,7 @@ const sweepstakesReports = () => {
                             <DatePicker label="To:" styles={getDateStyles} placeholder="Date" />
                         </div>
 
-                        <div
-                            className="ms-Grid-col ms-sm6 ms-md6 ms-lg6"
-                            style={{ paddingTop: '27px' }}>
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6" style={{ paddingTop: '27px' }}>
                             <Dropdown placeholder="Time" styles={dropdownStyles} options={time} />
                         </div>
                     </div>

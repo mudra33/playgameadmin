@@ -34,10 +34,7 @@ exports.up = function (knex) {
             .onDelete('SET NULL')
             .unsigned();
         table.timestamp('StorePercentagePlanCreateTS').notNullable().defaultTo(knex.fn.now());
-        table
-            .timestamp('StorePercentagePlanLastUpdatedDateTime')
-            .notNullable()
-            .defaultTo(knex.fn.now());
+        table.timestamp('StorePercentagePlanLastUpdatedDateTime').notNullable().defaultTo(knex.fn.now());
         table.index('StorePercentagePlanKey');
     });
 };

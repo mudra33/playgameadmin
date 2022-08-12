@@ -166,10 +166,7 @@ const customerEdit = () => {
             email: Yup.string().required(' Email is required'),
             addressLine1: Yup.string().required(' Addreess Line 1 is required'),
             addressLine2: Yup.string().required('Addewaa Line 2  is required'),
-            state: Yup.string()
-                .min(10, 'Too Short!')
-                .max(10, 'Too Long!')
-                .required('State Is required'),
+            state: Yup.string().min(10, 'Too Short!').max(10, 'Too Long!').required('State Is required'),
             city: Yup.string().required('city is required'),
             zip: Yup.string().required('Zip is required'),
             driverLicenseNumber: Yup.string().required('driverLicenseNumber is required'),
@@ -223,9 +220,7 @@ const customerEdit = () => {
                 <Label style={labelStyles}>{"86'd - Asked to Leave"}</Label>
 
                 <DefaultButton text="Transaction # XXXXXX" styles={exitButtonStyles} />
-                <Text style={labelFieldStyles}>
-                    Only Highlighted Fields May Be Edited.See Agent For Other C hanges
-                </Text>
+                <Text style={labelFieldStyles}>Only Highlighted Fields May Be Edited.See Agent For Other C hanges</Text>
 
                 <div
                     className="ms-Grid"
@@ -243,9 +238,7 @@ const customerEdit = () => {
                                 styles={getInputStyles}
                                 {...formik.getFieldProps('firstName')}
                                 errorMessage={
-                                    formik.touched.firstName && formik.errors.firstName
-                                        ? formik.errors.firstName
-                                        : null
+                                    formik.touched.firstName && formik.errors.firstName ? formik.errors.firstName : null
                                 }
                             />
                         </div>
@@ -256,9 +249,7 @@ const customerEdit = () => {
                                 styles={getInputStyles}
                                 {...formik.getFieldProps('lastName')}
                                 errorMessage={
-                                    formik.touched.lastName && formik.errors.lastName
-                                        ? formik.errors.lastName
-                                        : null
+                                    formik.touched.lastName && formik.errors.lastName ? formik.errors.lastName : null
                                 }
                             />
                         </div>
@@ -289,11 +280,7 @@ const customerEdit = () => {
                                 label="Email:"
                                 styles={getInputHighlightedStyles}
                                 {...formik.getFieldProps('email')}
-                                errorMessage={
-                                    formik.touched.email && formik.errors.email
-                                        ? formik.errors.email
-                                        : null
-                                }
+                                errorMessage={formik.touched.email && formik.errors.email ? formik.errors.email : null}
                             />
                         </div>
                     </div>
@@ -304,9 +291,7 @@ const customerEdit = () => {
                     styles={getInputHighlightedStyles}
                     {...formik.getFieldProps('addressLine1')}
                     errorMessage={
-                        formik.touched.addressLine1 && formik.errors.addressLine1
-                            ? formik.errors.addressLine1
-                            : null
+                        formik.touched.addressLine1 && formik.errors.addressLine1 ? formik.errors.addressLine1 : null
                     }
                 />
 
@@ -315,9 +300,7 @@ const customerEdit = () => {
                     styles={getInputHighlightedStyles}
                     {...formik.getFieldProps('addressLine2')}
                     errorMessage={
-                        formik.touched.addressLine2 && formik.errors.addressLine2
-                            ? formik.errors.addressLine2
-                            : null
+                        formik.touched.addressLine2 && formik.errors.addressLine2 ? formik.errors.addressLine2 : null
                     }
                 />
 
@@ -333,21 +316,12 @@ const customerEdit = () => {
                                 label="City:"
                                 styles={getInputHighlightedStyles}
                                 {...formik.getFieldProps('city')}
-                                errorMessage={
-                                    formik.touched.city && formik.errors.city
-                                        ? formik.errors.city
-                                        : null
-                                }
+                                errorMessage={formik.touched.city && formik.errors.city ? formik.errors.city : null}
                             />
                         </div>
 
                         <div className="ms-Grid-col ms-sm4">
-                            <Dropdown
-                                styles={dropdownStyles}
-                                placeholder="State"
-                                options={options}
-                                label="State:"
-                            />
+                            <Dropdown styles={dropdownStyles} placeholder="State" options={options} label="State:" />
                         </div>
 
                         <div className="ms-Grid-col ms-sm4">
@@ -355,11 +329,7 @@ const customerEdit = () => {
                                 label="Zip:"
                                 styles={getInputHighlightedStyles}
                                 {...formik.getFieldProps('zip')}
-                                errorMessage={
-                                    formik.touched.zip && formik.errors.zip
-                                        ? formik.errors.zip
-                                        : null
-                                }
+                                errorMessage={formik.touched.zip && formik.errors.zip ? formik.errors.zip : null}
                             />
                         </div>
                     </div>

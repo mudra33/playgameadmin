@@ -170,9 +170,7 @@ const Ecard = () => {
                         <div className="ms-Grid" dir="ltr">
                             <div className="ms-Grid-row">
                                 <div className="ms-Grid-col ms-sm6">
-                                    <CompoundButton
-                                        onClick={() => router.push('/')}
-                                        styles={buttonStylesAccept}>
+                                    <CompoundButton onClick={() => router.push('/')} styles={buttonStylesAccept}>
                                         No
                                     </CompoundButton>
                                 </div>
@@ -188,11 +186,7 @@ const Ecard = () => {
                             </div>
                         </div>
 
-                        <DefaultButton
-                            text="Exit"
-                            onClick={() => router.back()}
-                            styles={exitButtonStyles}
-                        />
+                        <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
                     </form>
                 </div>
             </div>

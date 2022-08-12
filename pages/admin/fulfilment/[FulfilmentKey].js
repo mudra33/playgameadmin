@@ -27,11 +27,7 @@ const ViewEditFulfilment = (props) => {
             router.push('/admin/fulfilment');
         }
 
-        if (
-            props.data.fulfilment &&
-            props.data.fulfilment.data &&
-            props.data.fulfilment.data.CompanyName
-        )
+        if (props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.CompanyName)
             setSelectedCompany({
                 key: props.data.fulfilment.data.CompanyKey,
                 text: props.data.fulfilment.data.CompanyName,
@@ -64,34 +60,24 @@ const ViewEditFulfilment = (props) => {
     const formik = useFormik({
         initialValues: {
             UserFirstName:
-                props.data.fulfilment &&
-                props.data.fulfilment.data &&
-                props.data.fulfilment.data.UserFirstName
+                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserFirstName
                     ? props.data.fulfilment.data.UserFirstName
                     : '',
             UserLastName:
-                props.data.fulfilment &&
-                props.data.fulfilment.data &&
-                props.data.fulfilment.data.UserLastName
+                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserLastName
                     ? props.data.fulfilment.data.UserLastName
                     : '',
             UserPhone:
-                props.data.fulfilment &&
-                props.data.fulfilment.data &&
-                props.data.fulfilment.data.UserPhone
+                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserPhone
                     ? props.data.fulfilment.data.UserPhone
                     : '',
             UserEmail:
-                props.data.fulfilment &&
-                props.data.fulfilment.data &&
-                props.data.fulfilment.data.UserEmail
+                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserEmail
                     ? props.data.fulfilment.data.UserEmail
                     : '',
             UserPassword: '',
             Comments:
-                props.data.fulfilment &&
-                props.data.fulfilment.data &&
-                props.data.fulfilment.data.Comments
+                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.Comments
                     ? props.data.fulfilment.data.Comments
                     : '',
         },
@@ -134,27 +120,24 @@ const ViewEditFulfilment = (props) => {
                 .max(60, 'Too long! Maximum allowed length is 60'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/company-users/${props.data.fulfilment.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        CompanyKey: selectedCompany.key,
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserEmail: values.UserEmail,
-                        UserPassword: values.UserPassword,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                        UserBlocked: selectedItem,
-                    }),
+            const res = await fetch(`/api/company-users/${props.data.fulfilment.data.UserKey}`, {
+                body: JSON.stringify({
+                    CompanyKey: selectedCompany.key,
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserEmail: values.UserEmail,
+                    UserPassword: values.UserPassword,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                    UserBlocked: selectedItem,
+                }),
 
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -316,9 +299,7 @@ const ViewEditFulfilment = (props) => {
 
 export async function getServerSideProps(context) {
     const { FulfilmentKey } = context.query;
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-users/${FulfilmentKey}`
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-users/${FulfilmentKey}`);
     const fulfilment = await res.json();
 
     const token = await jwt.getToken({

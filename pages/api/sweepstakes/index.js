@@ -5,11 +5,9 @@ const handler = async (req, res) => {
         if (req.method === 'POST') {
             await req.db
                 .transaction(async (trx) => {
-                    let subquery = await trx('Sweepstakes')
-                        .select('SweepstakesName', 'SweepstakesKey')
-                        .where({
-                            SweepstakesName: req.body.SweepstakesNames.text,
-                        });
+                    let subquery = await trx('Sweepstakes').select('SweepstakesName', 'SweepstakesKey').where({
+                        SweepstakesName: req.body.SweepstakesNames.text,
+                    });
 
                     subquery = JSON.parse(JSON.stringify(subquery));
 
@@ -23,11 +21,9 @@ const handler = async (req, res) => {
                             .into('Sweepstakes')
                             .transacting(trx);
 
-                        let companySubquery = await trx('Companies')
-                            .select('CompanyName', 'CompanyKey')
-                            .where({
-                                CompanyName: req.body.CompanyNames.text,
-                            });
+                        let companySubquery = await trx('Companies').select('CompanyName', 'CompanyKey').where({
+                            CompanyName: req.body.CompanyNames.text,
+                        });
                         companySubquery = JSON.parse(JSON.stringify(companySubquery));
 
                         if (companySubquery && companySubquery.length < 1) {
@@ -63,11 +59,9 @@ const handler = async (req, res) => {
                                 .transacting(trx);
                         }
                     } else {
-                        let companySubquery = await trx('Companies')
-                            .select('CompanyName', 'CompanyKey')
-                            .where({
-                                CompanyName: req.body.CompanyNames.text,
-                            });
+                        let companySubquery = await trx('Companies').select('CompanyName', 'CompanyKey').where({
+                            CompanyName: req.body.CompanyNames.text,
+                        });
                         companySubquery = JSON.parse(JSON.stringify(companySubquery));
 
                         if (companySubquery && companySubquery.length < 1) {

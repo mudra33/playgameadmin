@@ -50,15 +50,12 @@ const OwnerListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let owner = fetchData();
                                         setOwnerData(owner.data);
                                     },

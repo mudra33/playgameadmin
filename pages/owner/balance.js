@@ -52,25 +52,22 @@ const ShowBalance = () => {
                 .max(30, 'Too long! Maximum allowed length is 30'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/store/show-balance/${session.user.StoreKey}`,
-                {
-                    body: JSON.stringify({
-                        Settings: [
-                            {
-                                CreditBalance: selectedCreditBalance,
-                                DollarAmount: values.DollarAmount,
-                                LowBalanceThreshold: selectedLowBalanceThreshold,
-                                BonusEntries: selectedBonusEntries,
-                            },
-                        ],
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/store/show-balance/${session.user.StoreKey}`, {
+                body: JSON.stringify({
+                    Settings: [
+                        {
+                            CreditBalance: selectedCreditBalance,
+                            DollarAmount: values.DollarAmount,
+                            LowBalanceThreshold: selectedLowBalanceThreshold,
+                            BonusEntries: selectedBonusEntries,
+                        },
+                    ],
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
 
             const result = await res.json();
 
@@ -84,10 +81,7 @@ const ShowBalance = () => {
 
     return (
         <Layout title="Store Show Balance">
-            <PageHeader
-                title="Show Balance"
-                breadcrumb={[{ text: 'Home', key: 'home', href: '/owner/home' }]}
-            />
+            <PageHeader title="Show Balance" breadcrumb={[{ text: 'Home', key: 'home', href: '/owner/home' }]} />
 
             <div className="ms-Grid" dir="ltr">
                 <div className="ms-Grid-row">
@@ -129,9 +123,7 @@ const ShowBalance = () => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -186,10 +178,7 @@ const ShowBalance = () => {
                                 </div>
                                 <div className="ms-Grid-row" style={{ paddingBottom: '20px' }}>
                                     <div className="ms-Grid-col ms-sm8 ms-md8 ms-lg8">
-                                        <Label>
-                                            Show/Allow Bonus Entries? (This Will Reduce Your Net
-                                            Profit)
-                                        </Label>
+                                        <Label>Show/Allow Bonus Entries? (This Will Reduce Your Net Profit)</Label>
                                     </div>
 
                                     <div className="ms-Grid-col ms-sm4 ms-md4 ms-lg4">
@@ -205,10 +194,7 @@ const ShowBalance = () => {
                                 </div>
 
                                 <div style={{ paddingBottom: '25px' }}>
-                                    <Text>
-                                        You will receive a refill reminder when your account falls
-                                        to threshold
-                                    </Text>
+                                    <Text>You will receive a refill reminder when your account falls to threshold</Text>
                                 </div>
 
                                 <div className="ms-Grid-row">
@@ -216,16 +202,9 @@ const ShowBalance = () => {
                                         <PrimaryButton
                                             type="submit"
                                             text={
-                                                formik.isSubmitting ? (
-                                                    <Spinner size={SpinnerSize.xSmall} />
-                                                ) : (
-                                                    'Submit'
-                                                )
+                                                formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'
                                             }
-                                            disabled={
-                                                !(formik.isValid && formik.dirty) ||
-                                                formik.isSubmitting
-                                            }
+                                            disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                         />
                                     </div>
                                 </div>

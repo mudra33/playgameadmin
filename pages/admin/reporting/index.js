@@ -76,9 +76,7 @@ const Reporting = () => {
                             <DatePicker label="From:" placeholder="Date" />
                         </div>
 
-                        <div
-                            className="ms-Grid-col ms-sm6 ms-md6 ms-lg6"
-                            style={{ paddingTop: '27px' }}>
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6" style={{ paddingTop: '27px' }}>
                             <Dropdown placeholder="Time" options={time} />
                         </div>
                     </div>
@@ -88,9 +86,7 @@ const Reporting = () => {
                             <DatePicker label="To:" placeholder="Date" />
                         </div>
 
-                        <div
-                            className="ms-Grid-col ms-sm6 ms-md6 ms-lg6"
-                            style={{ paddingTop: '27px' }}>
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6" style={{ paddingTop: '27px' }}>
                             <Dropdown placeholder="Time" options={time} />
                         </div>
                     </div>

@@ -26,15 +26,9 @@ const Signup = () => {
         validationSchema: Yup.object({
             UserFirstName: Yup.string().required('First Name is required'),
             UserLastName: Yup.string().required('Last Name is required'),
-            UserPhone: Yup.string()
-                .min(10, 'Too Short!')
-                .max(10, 'Too Long!')
-                .required('Phone number Is required'),
+            UserPhone: Yup.string().min(10, 'Too Short!').max(10, 'Too Long!').required('Phone number Is required'),
             UserEmail: Yup.string().required('Email is required'),
-            UserPassword: Yup.string()
-                .min(10, 'Too Short!')
-                .max(10, 'Too Long!')
-                .required('Password Is required'),
+            UserPassword: Yup.string().min(10, 'Too Short!').max(10, 'Too Long!').required('Password Is required'),
         }),
         onSubmit: async (values) => {
             const res = await fetch(`/api/auth/signup`, {
@@ -209,13 +203,7 @@ const Signup = () => {
                     <div className="ms-Grid-col ms-sm12 ms-xl12">
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    `Submit`
-                                )
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : `Submit`}
                             disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                         />
                         {console.log('here', formik.dirty)}

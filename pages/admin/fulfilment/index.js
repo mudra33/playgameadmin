@@ -50,15 +50,12 @@ const FulfilmentListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let fulfilment = await fetchData();
                                         setFulfilmentData(fulfilment.data);
                                     },
@@ -125,15 +122,12 @@ const FulfilmentListing = (props) => {
 };
 
 async function fetchData() {
-    let fulfilment = await fetch(
-        `/api/users?UserRole=Fulfilment`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let fulfilment = await fetch(`/api/users?UserRole=Fulfilment`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
     fulfilment = await fulfilment.json();
 
     return fulfilment;

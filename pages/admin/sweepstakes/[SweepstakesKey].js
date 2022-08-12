@@ -192,8 +192,7 @@ const ViewSweepstake = (props) => {
                         <ChoiceGroup
                             options={UserBlockedoptions}
                             defaultSelectedKey={
-                                props.data.CompanySweepstakes[0] &&
-                                props.data.CompanySweepstakes[0].SweepstakesBlocked
+                                props.data.CompanySweepstakes[0] && props.data.CompanySweepstakes[0].SweepstakesBlocked
                                     ? props.data.CompanySweepstakes[0].SweepstakesBlocked
                                     : ''
                             }

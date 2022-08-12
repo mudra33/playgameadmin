@@ -153,8 +153,7 @@ const profile = () => {
                             style={{
                                 width: '500px',
                                 height: '230px',
-                                background:
-                                    "transparent url('img/bg.png') 0% 0% no-repeat padding-box",
+                                background: "transparent url('img/bg.png') 0% 0% no-repeat padding-box",
                                 border: '6px solid #FFFFFF',
                                 borderRadius: '4px',
                                 opacity: '1',
@@ -185,9 +184,7 @@ const profile = () => {
                             </div>
 
                             <div className="ms-Grid-col ms-sm6">
-                                <CompoundButton
-                                    secondaryText="Continue"
-                                    styles={buttonStylesDecline}>
+                                <CompoundButton secondaryText="Continue" styles={buttonStylesDecline}>
                                     Yes
                                 </CompoundButton>
                             </div>

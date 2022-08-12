@@ -27,14 +27,8 @@ const EditStore = (props) => {
     const SweepstakesData = [];
     const [selectedItem, setSelectedItem] = React.useState(false);
     const [selectedPercentagePlan, setSelectedPercentagePlan] = React.useState({
-        text:
-            props.percentagePlan.data.length > 0
-                ? props.percentagePlan.data[0].PercentagePlanName
-                : '',
-        key:
-            props.percentagePlan.data.length > 0
-                ? props.percentagePlan.data[0].PercentagePlanKey
-                : '',
+        text: props.percentagePlan.data.length > 0 ? props.percentagePlan.data[0].PercentagePlanName : '',
+        key: props.percentagePlan.data.length > 0 ? props.percentagePlan.data[0].PercentagePlanKey : '',
     });
 
     const onChangeBlock = (event, item) => {
@@ -90,54 +84,25 @@ const EditStore = (props) => {
 
     const formik = useFormik({
         initialValues: {
-            StoreName:
-                props.store.data && props.store.data.StoreName ? props.store.data.StoreName : '',
-            StorePhone:
-                props.store.data && props.store.data.StorePhone ? props.store.data.StorePhone : '',
-            StoreAddress1:
-                props.store.data && props.store.data.StoreAddress1
-                    ? props.store.data.StoreAddress1
-                    : '',
-            StoreAddress2:
-                props.store.data && props.store.data.StoreAddress2
-                    ? props.store.data.StoreAddress2
-                    : '',
-            StoreCity:
-                props.store.data && props.store.data.StoreCity ? props.store.data.StoreCity : '',
-            StoreState:
-                props.store.data && props.store.data.StoreState ? props.store.data.StoreState : '',
-            StoreZip:
-                props.store.data && props.store.data.StoreZip ? props.store.data.StoreZip : '',
+            StoreName: props.store.data && props.store.data.StoreName ? props.store.data.StoreName : '',
+            StorePhone: props.store.data && props.store.data.StorePhone ? props.store.data.StorePhone : '',
+            StoreAddress1: props.store.data && props.store.data.StoreAddress1 ? props.store.data.StoreAddress1 : '',
+            StoreAddress2: props.store.data && props.store.data.StoreAddress2 ? props.store.data.StoreAddress2 : '',
+            StoreCity: props.store.data && props.store.data.StoreCity ? props.store.data.StoreCity : '',
+            StoreState: props.store.data && props.store.data.StoreState ? props.store.data.StoreState : '',
+            StoreZip: props.store.data && props.store.data.StoreZip ? props.store.data.StoreZip : '',
             MailingAddress1:
-                props.store.data && props.store.data.MailingAddress1
-                    ? props.store.data.MailingAddress1
-                    : '',
+                props.store.data && props.store.data.MailingAddress1 ? props.store.data.MailingAddress1 : '',
             MailingAddress2:
-                props.store.data && props.store.data.MailingAddress2
-                    ? props.store.data.MailingAddress2
-                    : '',
-            MailingCity:
-                props.store.data && props.store.data.MailingCity
-                    ? props.store.data.MailingCity
-                    : '',
-            MailingState:
-                props.store.data && props.store.data.MailingState
-                    ? props.store.data.MailingState
-                    : '',
-            MailingZip:
-                props.store.data && props.store.data.MailingZip ? props.store.data.MailingZip : '',
-            Comments:
-                props.store.data && props.store.data.Comments ? props.store.data.Comments : '',
-            Sweepstakes:
-                props.store.data && props.store.data.Sweepstakes.length > 0 ? SweepstakesData : [],
+                props.store.data && props.store.data.MailingAddress2 ? props.store.data.MailingAddress2 : '',
+            MailingCity: props.store.data && props.store.data.MailingCity ? props.store.data.MailingCity : '',
+            MailingState: props.store.data && props.store.data.MailingState ? props.store.data.MailingState : '',
+            MailingZip: props.store.data && props.store.data.MailingZip ? props.store.data.MailingZip : '',
+            Comments: props.store.data && props.store.data.Comments ? props.store.data.Comments : '',
+            Sweepstakes: props.store.data && props.store.data.Sweepstakes.length > 0 ? SweepstakesData : [],
             StorePercentagePlan:
-                props.store.data && props.store.data.PercentagePlanName
-                    ? props.store.data.PercentagePlanName
-                    : '',
-            Salesperson:
-                props.store.data && props.store.data.Salesperson
-                    ? props.store.data.Salesperson
-                    : '',
+                props.store.data && props.store.data.PercentagePlanName ? props.store.data.PercentagePlanName : '',
+            Salesperson: props.store.data && props.store.data.Salesperson ? props.store.data.Salesperson : '',
             SalespersonPercentage:
                 props.store.data && props.store.data.SalespersonPercentage
                     ? props.store.data.SalespersonPercentage
@@ -230,37 +195,34 @@ const EditStore = (props) => {
                 .required('Salesperson Percentage is required'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/store/${props.store.data.StoreKey}`,
-                {
-                    body: JSON.stringify({
-                        StoreName: values.StoreName,
-                        StorePhone: values.StorePhone,
-                        StoreAddress1: values.StoreAddress1,
-                        StoreAddress2: values.StoreAddress2,
-                        StoreCity: values.StoreCity,
-                        StoreState: values.StoreState,
-                        StoreZip: values.StoreZip,
-                        MailingAddress1: values.MailingAddress1,
-                        MailingAddress2: values.MailingAddress2,
-                        MailingCity: values.MailingCity,
-                        MailingState: values.MailingState,
-                        MailingZip: values.MailingZip,
-                        Comments: values.Comments,
-                        PercentagePlanKey: selectedPercentagePlan.key,
-                        Salesperson: values.Salesperson,
-                        SalespersonPercentage: values.SalespersonPercentage,
-                        UserKey_LastUpdatedBy: session.user.UserKey,
-                        UserKey_CreatedBy: session.user.UserKey,
-                        Sweepstakes: values.Sweepstakes,
-                        StoreBlocked: selectedItem,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/store/${props.store.data.StoreKey}`, {
+                body: JSON.stringify({
+                    StoreName: values.StoreName,
+                    StorePhone: values.StorePhone,
+                    StoreAddress1: values.StoreAddress1,
+                    StoreAddress2: values.StoreAddress2,
+                    StoreCity: values.StoreCity,
+                    StoreState: values.StoreState,
+                    StoreZip: values.StoreZip,
+                    MailingAddress1: values.MailingAddress1,
+                    MailingAddress2: values.MailingAddress2,
+                    MailingCity: values.MailingCity,
+                    MailingState: values.MailingState,
+                    MailingZip: values.MailingZip,
+                    Comments: values.Comments,
+                    PercentagePlanKey: selectedPercentagePlan.key,
+                    Salesperson: values.Salesperson,
+                    SalespersonPercentage: values.SalespersonPercentage,
+                    UserKey_LastUpdatedBy: session.user.UserKey,
+                    UserKey_CreatedBy: session.user.UserKey,
+                    Sweepstakes: values.Sweepstakes,
+                    StoreBlocked: selectedItem,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -292,9 +254,7 @@ const EditStore = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -529,27 +489,18 @@ const EditStore = (props) => {
                         <Label>Sweepstakes:</Label>
                         <div className="ms-Grid-row">
                             <div className="ms-Grid-col ms-sm10">
-                                <Stack
-                                    wrap
-                                    horizontal
-                                    styles={stackItemStyles}
-                                    tokens={stackTokens}>
+                                <Stack wrap horizontal styles={stackItemStyles} tokens={stackTokens}>
                                     {props.sweepstakes.data < 1
                                         ? ''
                                         : props.sweepstakes.data.map((sweepstakes) => {
                                               const sa =
                                                   props.store.data && props.store.data.Sweepstakes
-                                                      ? props.store.data.Sweepstakes.find(
-                                                            (value) => {
-                                                                if (
-                                                                    value.SweepstakesKey ===
-                                                                    sweepstakes.SweepstakesKey
-                                                                ) {
-                                                                    return true;
-                                                                }
-                                                                return false;
+                                                      ? props.store.data.Sweepstakes.find((value) => {
+                                                            if (value.SweepstakesKey === sweepstakes.SweepstakesKey) {
+                                                                return true;
                                                             }
-                                                        )
+                                                            return false;
+                                                        })
                                                       : '';
 
                                               return (
@@ -575,9 +526,7 @@ const EditStore = (props) => {
                     options={UserBlockedoptions}
                     optionsContainIconOrImage={false}
                     defaultSelectedKey={
-                        props.store.data && props.store.data.StoreBlocked
-                            ? props.store.data.StoreBlocked
-                            : 0
+                        props.store.data && props.store.data.StoreBlocked ? props.store.data.StoreBlocked : 0
                     }
                 />
 
@@ -585,13 +534,7 @@ const EditStore = (props) => {
                     <div className="ms-Grid-col ms-sm12">
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    'Submit'
-                                )
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
                             disabled={!formik.isValid || formik.isSubmitting}
                         />
                     </div>
@@ -607,15 +550,12 @@ export async function getServerSideProps(context) {
     const res = await fetch(`/api/store/${StoreKey}`);
     const store = await res.json();
 
-    let percentagePlan = await fetch(
-        `/api/percentage-plan`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let percentagePlan = await fetch(`/api/percentage-plan`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     percentagePlan = await percentagePlan.json();
 

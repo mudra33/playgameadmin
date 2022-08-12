@@ -64,9 +64,7 @@ const handler = async (req, res) => {
                         .catch(trx.rollback);
                 })
                 .then((inserts) => {
-                    return res
-                        .status(201)
-                        .send({ message: 'Registered Successfully.', data: inserts[0] });
+                    return res.status(201).send({ message: 'Registered Successfully.', data: inserts[0] });
                 })
                 .catch((error) => {
                     console.log(error, 'error');

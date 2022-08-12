@@ -57,18 +57,10 @@ const EditOwnerManager = (props) => {
 
     const formik = useFormik({
         initialValues: {
-            UserFirstName:
-                props.owner.data && props.owner.data.UserFirstName
-                    ? props.owner.data.UserFirstName
-                    : '',
-            UserLastName:
-                props.owner.data && props.owner.data.UserLastName
-                    ? props.owner.data.UserLastName
-                    : '',
-            UserPhone:
-                props.owner.data && props.owner.data.UserPhone ? props.owner.data.UserPhone : '',
-            UserEmail:
-                props.owner.data && props.owner.data.UserEmail ? props.owner.data.UserEmail : '',
+            UserFirstName: props.owner.data && props.owner.data.UserFirstName ? props.owner.data.UserFirstName : '',
+            UserLastName: props.owner.data && props.owner.data.UserLastName ? props.owner.data.UserLastName : '',
+            UserPhone: props.owner.data && props.owner.data.UserPhone ? props.owner.data.UserPhone : '',
+            UserEmail: props.owner.data && props.owner.data.UserEmail ? props.owner.data.UserEmail : '',
             UserPassword: '',
         },
         validationSchema: Yup.object({
@@ -105,26 +97,23 @@ const EditOwnerManager = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/UserKey/${props.owner.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserEmail: values.UserEmail,
-                        UserPassword: values.UserPassword,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                        UserBlocked: selectedUserBlocked,
-                        ForcePasswordChange: selectedForcePasswordChange,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/UserKey/${props.owner.data.UserKey}`, {
+                body: JSON.stringify({
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserEmail: values.UserEmail,
+                    UserPassword: values.UserPassword,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                    UserBlocked: selectedUserBlocked,
+                    ForcePasswordChange: selectedForcePasswordChange,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -237,9 +226,7 @@ const EditOwnerManager = (props) => {
                                 onChange={(event, item) => {
                                     setSelectedForcePasswordChange(item.key);
                                 }}
-                                defaultSelectedKey={
-                                    props.owner.data ? props.owner.data.ForcePasswordChange : ''
-                                }
+                                defaultSelectedKey={props.owner.data ? props.owner.data.ForcePasswordChange : ''}
                             />
 
                             <TextField
@@ -261,9 +248,7 @@ const EditOwnerManager = (props) => {
                                 onChange={(event, item) => {
                                     setSelectedUserBlocked(item.key);
                                 }}
-                                defaultSelectedKey={
-                                    props.owner.data ? props.owner.data.UserBlocked : ''
-                                }
+                                defaultSelectedKey={props.owner.data ? props.owner.data.UserBlocked : ''}
                             />
                         </div>
 
@@ -271,16 +256,8 @@ const EditOwnerManager = (props) => {
                             <div className="ms-Grid-col ms-sm12">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Edit Owner'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Edit Owner'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>
@@ -293,9 +270,7 @@ const EditOwnerManager = (props) => {
 
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
-    const res = await fetch(
-        `/api/store-users/${UserKey}?UserRole=Owner`
-    );
+    const res = await fetch(`/api/store-users/${UserKey}?UserRole=Owner`);
     const owner = await res.json();
 
     const token = await jwt.getToken({

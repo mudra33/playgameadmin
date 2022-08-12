@@ -25,11 +25,7 @@ export default function Layout({ children, title }) {
                 <meta name="twitter:card" content="summary_large_image" />
 
                 <meta charSet="utf-8" />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                    key="viewport"
-                />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
             </Head>
 
             <div className="ms-Grid pre" dir="ltr">

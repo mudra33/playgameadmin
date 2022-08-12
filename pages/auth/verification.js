@@ -167,11 +167,7 @@ const Verification = () => {
                         </div>
                     </div>
                 </div>
-                <DefaultButton
-                    text="Exit"
-                    onClick={() => router.back()}
-                    styles={exitButtonStyles}
-                />
+                <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
             </form>
         </Layout>
     );

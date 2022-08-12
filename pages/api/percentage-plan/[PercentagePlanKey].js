@@ -6,12 +6,7 @@ const handler = async (req, res) => {
             const data = await req
                 .db('PercentagePlans')
                 .where({ PercentagePlanKey: req.query.PercentagePlanKey })
-                .select(
-                    'PercentagePlanKey',
-                    'PercentagePlanName',
-                    'Comments',
-                    'PurchasePercentage'
-                );
+                .select('PercentagePlanKey', 'PercentagePlanName', 'Comments', 'PurchasePercentage');
 
             if (data && data.length < 1) {
                 return res.status(404).json({

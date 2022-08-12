@@ -38,16 +38,9 @@ const ViewEditAdmin = (props) => {
 
     const formik = useFormik({
         initialValues: {
-            UserFirstName:
-                props.admin.data && props.admin.data.UserFirstName
-                    ? props.admin.data.UserFirstName
-                    : '',
-            UserLastName:
-                props.admin.data && props.admin.data.UserLastName
-                    ? props.admin.data.UserLastName
-                    : '',
-            UserPhone:
-                props.admin.data && props.admin.data.UserPhone ? props.admin.data.UserPhone : '',
+            UserFirstName: props.admin.data && props.admin.data.UserFirstName ? props.admin.data.UserFirstName : '',
+            UserLastName: props.admin.data && props.admin.data.UserLastName ? props.admin.data.UserLastName : '',
+            UserPhone: props.admin.data && props.admin.data.UserPhone ? props.admin.data.UserPhone : '',
             UserPassword: '',
         },
         validationSchema: Yup.object({
@@ -77,25 +70,22 @@ const ViewEditAdmin = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/UserKey/${props.admin.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserPassword: values.UserPassword,
-                        ForcePasswordChange: selectedForcePasswordChange,
-                        UserBlocked: selectedUserBlocked,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/UserKey/${props.admin.data.UserKey}`, {
+                body: JSON.stringify({
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserPassword: values.UserPassword,
+                    ForcePasswordChange: selectedForcePasswordChange,
+                    UserBlocked: selectedUserBlocked,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 setNotification({ message: result.message, messageBarType: 4 });
@@ -128,9 +118,7 @@ const ViewEditAdmin = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -206,9 +194,7 @@ const ViewEditAdmin = (props) => {
                             <ChoiceGroup
                                 options={UserBlockedoptions}
                                 defaultSelectedKey={
-                                    props.admin.data && props.admin.data.UserBlocked
-                                        ? props.admin.data.UserBlocked
-                                        : ''
+                                    props.admin.data && props.admin.data.UserBlocked ? props.admin.data.UserBlocked : ''
                                 }
                                 label="Admin Blocked:"
                                 optionsContainIconOrImage={false}
@@ -224,11 +210,7 @@ const ViewEditAdmin = (props) => {
                                     <PrimaryButton
                                         type="submit"
                                         text={
-                                            formik.isSubmitting ? (
-                                                <Spinner size={SpinnerSize.xSmall} />
-                                            ) : (
-                                                'Update Admin'
-                                            )
+                                            formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Update Admin'
                                         }
                                         disabled={!formik.isValid || formik.isSubmitting}
                                     />
@@ -245,9 +227,7 @@ const ViewEditAdmin = (props) => {
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
 
-    const res = await fetch(
-        `/api/users/UserKey/${UserKey}?UserRole=Admin`
-    );
+    const res = await fetch(`/api/users/UserKey/${UserKey}?UserRole=Admin`);
     const admin = await res.json();
     const token = await jwt.getToken({
         req: context.req,

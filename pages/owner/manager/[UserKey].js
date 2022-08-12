@@ -51,13 +51,9 @@ const EditManager = (props) => {
                     ? props.StoreManager.data.UserLastName
                     : '',
             UserPhone:
-                props.StoreManager.data && props.StoreManager.data.UserPhone
-                    ? props.StoreManager.data.UserPhone
-                    : '',
+                props.StoreManager.data && props.StoreManager.data.UserPhone ? props.StoreManager.data.UserPhone : '',
             UserEmail:
-                props.StoreManager.data && props.StoreManager.data.UserEmail
-                    ? props.StoreManager.data.UserEmail
-                    : '',
+                props.StoreManager.data && props.StoreManager.data.UserEmail ? props.StoreManager.data.UserEmail : '',
             UserPassword: '',
         },
         validationSchema: Yup.object({
@@ -94,26 +90,23 @@ const EditManager = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/UserKey/${props.StoreManager.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserEmail: values.UserEmail,
-                        UserPassword: values.UserPassword,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                        UserBlocked: selectedUserBlocked,
-                        ForcePasswordChange: selectedForcePasswordChange,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/UserKey/${props.StoreManager.data.UserKey}`, {
+                body: JSON.stringify({
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserEmail: values.UserEmail,
+                    UserPassword: values.UserPassword,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                    UserBlocked: selectedUserBlocked,
+                    ForcePasswordChange: selectedForcePasswordChange,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -161,9 +154,7 @@ const EditManager = (props) => {
                                 }}>
                                 <Label>Store Name:&nbsp;</Label>
                                 <Text>
-                                    {props.session &&
-                                    props.session.user &&
-                                    props.session.user.StoreName
+                                    {props.session && props.session.user && props.session.user.StoreName
                                         ? props.session.user.StoreName
                                         : 'No Store Name Found'}
                                 </Text>
@@ -178,9 +169,7 @@ const EditManager = (props) => {
                                 }}>
                                 <Label>Store Id:&nbsp;</Label>
                                 <Text>
-                                    {props.session &&
-                                    props.session.user &&
-                                    props.session.user.StoreKey
+                                    {props.session && props.session.user && props.session.user.StoreKey
                                         ? props.session.user.StoreKey
                                         : 'No Store Key Found'}
                                 </Text>
@@ -249,9 +238,7 @@ const EditManager = (props) => {
                                     setSelectedForcePasswordChange(item.key);
                                 }}
                                 defaultSelectedKey={
-                                    props.StoreManager.data
-                                        ? props.StoreManager.data.ForcePasswordChange
-                                        : ''
+                                    props.StoreManager.data ? props.StoreManager.data.ForcePasswordChange : ''
                                 }
                             />
 
@@ -274,11 +261,7 @@ const EditManager = (props) => {
                                 onChange={(event, item) => {
                                     setSelectedUserBlocked(item.key);
                                 }}
-                                defaultSelectedKey={
-                                    props.StoreManager.data
-                                        ? props.StoreManager.data.UserBlocked
-                                        : ''
-                                }
+                                defaultSelectedKey={props.StoreManager.data ? props.StoreManager.data.UserBlocked : ''}
                             />
                         </div>
 
@@ -287,15 +270,9 @@ const EditManager = (props) => {
                                 <PrimaryButton
                                     type="submit"
                                     text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Update Manager'
-                                        )
+                                        formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Update Manager'
                                     }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>
@@ -309,9 +286,7 @@ const EditManager = (props) => {
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
     const session = await getSession(context);
-    const res = await fetch(
-        `/api/store-users/${UserKey}?UserRole=Manager`
-    );
+    const res = await fetch(`/api/store-users/${UserKey}?UserRole=Manager`);
     const StoreManager = await res.json();
 
     const token = await jwt.getToken({

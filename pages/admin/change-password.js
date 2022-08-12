@@ -47,20 +47,17 @@ const ChangePassword = (props) => {
                 .oneOf([Yup.ref('NewUserPassword'), null], 'Passwords must match'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/UserKey/change-password`,
-                {
-                    body: JSON.stringify({
-                        UserKey: props.session.user.UserKey,
-                        UserPassword: values.NewUserPassword,
-                        NewUserPassword: values.NewUserPassword,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/UserKey/change-password`, {
+                body: JSON.stringify({
+                    UserKey: props.session.user.UserKey,
+                    UserPassword: values.NewUserPassword,
+                    NewUserPassword: values.NewUserPassword,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
 
             if (res.ok && result) {
@@ -73,10 +70,7 @@ const ChangePassword = (props) => {
 
     return (
         <Layout title="Change Password">
-            <PageHeader
-                title="Change Password"
-                breadcrumb={[{ text: 'Home', key: 'home', href: '/admin/home' }]}
-            />
+            <PageHeader title="Change Password" breadcrumb={[{ text: 'Home', key: 'home', href: '/admin/home' }]} />
             <div className="ms-Grid" dir="ltr">
                 <div className="ms-Grid-row">
                     <div className="ms-Grid-col ms-sm6 ms-md5 ms-lg5">
@@ -84,9 +78,7 @@ const ChangePassword = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -130,13 +122,7 @@ const ChangePassword = (props) => {
 
                             <PrimaryButton
                                 type="submit"
-                                text={
-                                    formik.isSubmitting ? (
-                                        <Spinner size={SpinnerSize.xSmall} />
-                                    ) : (
-                                        `Change Password`
-                                    )
-                                }
+                                text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : `Change Password`}
                                 disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                             />
                         </form>

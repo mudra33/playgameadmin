@@ -9,12 +9,7 @@ exports.up = function (knex) {
             .unsigned()
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
-        table
-            .integer('RoleKey', 11)
-            .notNullable()
-            .references('RoleKey')
-            .inTable('Roles')
-            .unsigned();
+        table.integer('RoleKey', 11).notNullable().references('RoleKey').inTable('Roles').unsigned();
         table
             .integer('UserKey_LastUpdatedBy', 11)
             .references('UserKey')

@@ -170,13 +170,7 @@ const Login = (props) => {
                     <div className="ms-Grid-col ms-sm12 ms-xl12">
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    `Login`
-                                )
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : `Login`}
                             disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                         />
                     </div>

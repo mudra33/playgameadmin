@@ -100,11 +100,7 @@ const noAccount = () => {
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
                         <div className="ms-Grid-col ms-sm6">
-                            <PrimaryButton
-                                text="No"
-                                onClick={() => router.push('/')}
-                                styles={buttonStylesAccept}
-                            />
+                            <PrimaryButton text="No" onClick={() => router.push('/')} styles={buttonStylesAccept} />
                         </div>
 
                         <div className="ms-Grid-col ms-sm6">
@@ -117,11 +113,7 @@ const noAccount = () => {
                     </div>
                 </div>
 
-                <DefaultButton
-                    text="Exit"
-                    onClick={() => router.back()}
-                    styles={exitButtonStyles}
-                />
+                <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
             </form>
         </Layout>
     );

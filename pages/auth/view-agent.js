@@ -112,14 +112,12 @@ const viewAgent = () => {
                 }}>
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Name:&nbsp;</Label>
                             <Text styles={textStyles}>Xxxxx Xxxxxxxx</Text>
                         </div>
 
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}>Phone Number:&nbsp;</Label>
                             <Text styles={textStyles}>XXX-XXX-XXXX</Text>
                         </div>
@@ -131,11 +129,7 @@ const viewAgent = () => {
                 </Text>
 
                 <CompoundButton styles={compoundButtonStyles}>
-                    <FontIcon
-                        aria-label="TextDocument"
-                        iconName="TextDocument"
-                        className={iconClass}
-                    />
+                    <FontIcon aria-label="TextDocument" iconName="TextDocument" className={iconClass} />
                     <span
                         style={{
                             color: '#333333',
@@ -171,11 +165,7 @@ const viewAgent = () => {
                             />
                         </div>
                         <div className="ms-Grid-col  ms-sm6 ms-md6 ms-lg6">
-                            <DefaultButton
-                                text="Exit"
-                                onClick={() => router.push('/')}
-                                styles={exitButtonStyles}
-                            />
+                            <DefaultButton text="Exit" onClick={() => router.push('/')} styles={exitButtonStyles} />
                         </div>
                     </div>
                 </div>

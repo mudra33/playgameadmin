@@ -50,15 +50,12 @@ const BonusPlanListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/bonus-plan/${item.BonusPlanKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/bonus-plan/${item.BonusPlanKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let bonusPlan = await fetchData();
                                         setBonusPlanData(bonusPlan.data);
                                     },

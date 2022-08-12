@@ -18,11 +18,7 @@ const handler = async (req, res) => {
                                     'BonusPlanSweepstakes.SweepstakesKey',
                                     'Sweepstakes.SweepstakesKey'
                                 )
-                                .where(
-                                    'BonusPlanSweepstakes.BonusPlanKey',
-                                    '=',
-                                    req.query.BonusPlanKey
-                                );
+                                .where('BonusPlanSweepstakes.BonusPlanKey', '=', req.query.BonusPlanKey);
 
                             data[0].Sweepstakes = JSON.parse(JSON.stringify(Sweepstakes));
 
@@ -89,10 +85,7 @@ const handler = async (req, res) => {
         }
 
         if (req.method === 'DELETE') {
-            const data = await req
-                .db('BonusPlans')
-                .where({ BonusPlanKey: req.query.BonusPlanKey })
-                .del();
+            const data = await req.db('BonusPlans').where({ BonusPlanKey: req.query.BonusPlanKey }).del();
 
             if (data < 1) {
                 return res.status(404).json({

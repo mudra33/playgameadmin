@@ -167,17 +167,14 @@ const FreeSweepStakes = () => {
                 }}>
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-                        <div
-                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Label styles={labelStyles}> Thank You,&nbsp;</Label>
                             <Text styles={textStyles}> Xxxxx Xxxxxxx</Text>
                         </div>
                     </div>
                 </div>
 
-                <Label styles={labelStyles}>
-                    With your purchase you can receive free sweepstakes entries&nbsp;
-                </Label>
+                <Label styles={labelStyles}>With your purchase you can receive free sweepstakes entries&nbsp;</Label>
                 <h2
                     style={{
                         textAlign: 'left',
@@ -190,11 +187,7 @@ const FreeSweepStakes = () => {
                     Which Sweepstakes would you like?
                 </h2>
 
-                <ChoiceGroup
-                    options={options}
-                    styles={choiceGroupStyles}
-                    optionsContainIconOrImage={false}
-                />
+                <ChoiceGroup options={options} styles={choiceGroupStyles} optionsContainIconOrImage={false} />
 
                 <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">

@@ -72,15 +72,12 @@ const AddManager = (props) => {
                 .required('User Password is required'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(
-                `/api/users/${values.UserPhone}`,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'GET',
-                }
-            );
+            const user = await fetch(`/api/users/${values.UserPhone}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'GET',
+            });
             const { data } = await user.json();
 
             if (data && data.UserKey) {
@@ -141,9 +138,7 @@ const AddManager = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -155,11 +150,7 @@ const AddManager = (props) => {
                                     style={{
                                         marginLeft: '10px',
                                     }}>
-                                    <Dropdown
-                                        options={StoreName}
-                                        onChange={onDropdownChange}
-                                        label="Store Name:"
-                                    />
+                                    <Dropdown options={StoreName} onChange={onDropdownChange} label="Store Name:" />
                                 </div>
                             </div>
                         </div>
@@ -236,16 +227,8 @@ const AddManager = (props) => {
                             <div className="ms-Grid-col ms-sm12">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Submit'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

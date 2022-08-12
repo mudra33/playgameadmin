@@ -42,27 +42,20 @@ const AdminListing = (props) => {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
-                                        router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/${item.UserKey}`
-                                        ),
+                                        router.push(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let admin = await fetchData(
-                                            props.session &&
-                                                props.session.user &&
-                                                props.session.user.UserKey
+                                            props.session && props.session.user && props.session.user.UserKey
                                                 ? props.session.user.UserKey
                                                 : ''
                                         );
@@ -131,15 +124,12 @@ const AdminListing = (props) => {
 };
 
 async function fetchData(UserKey) {
-    let admin = await fetch(
-        `/api/users?UserRole=Admin&UserKey=${UserKey}`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let admin = await fetch(`/api/users?UserRole=Admin&UserKey=${UserKey}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     admin = await admin.json();
     return admin;

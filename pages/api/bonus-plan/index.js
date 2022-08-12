@@ -54,9 +54,7 @@ const handler = async (req, res) => {
         }
 
         if (req.method === 'GET') {
-            const data = await req
-                .db('BonusPlans')
-                .select('BonusPlanKey', 'BonusPlanName', 'Comments');
+            const data = await req.db('BonusPlans').select('BonusPlanKey', 'BonusPlanName', 'Comments');
 
             return res.status(200).send({ data });
         } else {

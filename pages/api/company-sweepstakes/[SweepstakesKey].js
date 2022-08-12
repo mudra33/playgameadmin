@@ -13,11 +13,7 @@ const handler = async (req, res) => {
                     'CompanySweepstakes.SweepstakesBlocked'
                 )
                 .innerJoin('Companies', 'CompanySweepstakes.CompanyKey', 'Companies.CompanyKey')
-                .innerJoin(
-                    'Sweepstakes',
-                    'CompanySweepstakes.SweepstakesKey',
-                    'Sweepstakes.SweepstakesKey'
-                )
+                .innerJoin('Sweepstakes', 'CompanySweepstakes.SweepstakesKey', 'Sweepstakes.SweepstakesKey')
                 .where('CompanySweepstakes.CompanySweepstakesKey', '=', req.query.SweepstakesKey);
 
             return res.status(200).send({ data });

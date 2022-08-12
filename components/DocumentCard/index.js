@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    DocumentCard as BaseDocumentCard,
-    DocumentCardLogo,
-    DocumentCardTitle,
-} from '@fluentui/react';
+import { DocumentCard as BaseDocumentCard, DocumentCardLogo, DocumentCardTitle } from '@fluentui/react';
 
 const styles = {
     cardStyles: {
@@ -66,11 +62,7 @@ const DocumentCard = (props) => {
                 styles={styles.cardStyles}>
                 <DocumentCardLogo logoIcon={props.data.icon} styles={styles.icon} />
                 <DocumentCardTitle shouldTruncate title={props.data.title} styles={styles.header} />
-                <DocumentCardTitle
-                    shouldTruncate
-                    title={`${props.data.amount}`}
-                    styles={styles.amount}
-                />
+                <DocumentCardTitle shouldTruncate title={`${props.data.amount}`} styles={styles.amount} />
                 <DocumentCardTitle
                     shouldTruncate
                     showAsSecondaryTitle

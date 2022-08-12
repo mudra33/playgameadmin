@@ -46,15 +46,12 @@ const Customers = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/userKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/userKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let blockedUsersData = await fetchData();
                                         setBlockedUsersData(blockedUsersData.data);
                                     },
@@ -116,19 +113,16 @@ const Customers = (props) => {
                             optionsContainIconOrImage={false}
                             onChange={async (event, eventItem) => {
                                 setSelectedUserBlocked(eventItem.key);
-                                await fetch(
-                                    `/api/users/userKey/${item.UserKey}`,
-                                    {
-                                        body: JSON.stringify({
-                                            UserBlocked: selectedUserBlocked,
-                                            UserPassword: item.UserPassword,
-                                        }),
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        method: 'PATCH',
-                                    }
-                                );
+                                await fetch(`/api/users/userKey/${item.UserKey}`, {
+                                    body: JSON.stringify({
+                                        UserBlocked: selectedUserBlocked,
+                                        UserPassword: item.UserPassword,
+                                    }),
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    method: 'PATCH',
+                                });
                                 let blockedUsersData = await fetchData();
                                 setBlockedUsersData(blockedUsersData.data);
                             }}
@@ -158,15 +152,12 @@ const Customers = (props) => {
 };
 
 async function fetchData() {
-    let customer = await fetch(
-        `/api/users?UserRole=Customer&UserKey=" "`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let customer = await fetch(`/api/users?UserRole=Customer&UserKey=" "`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     customer = await customer.json();
     return customer;

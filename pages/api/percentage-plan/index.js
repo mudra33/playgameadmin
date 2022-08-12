@@ -19,12 +19,7 @@ const handler = async (req, res) => {
         if (req.method === 'GET') {
             const data = await req
                 .db('PercentagePlans')
-                .select(
-                    'PercentagePlanKey',
-                    'PercentagePlanName',
-                    'PurchasePercentage',
-                    'Comments'
-                );
+                .select('PercentagePlanKey', 'PercentagePlanName', 'PurchasePercentage', 'Comments');
 
             return res.status(200).send({ data });
         } else {

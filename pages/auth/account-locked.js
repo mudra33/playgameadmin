@@ -62,15 +62,9 @@ const AccountLocked = () => {
                     display: 'flex',
                     flexDirection: 'column',
                 }}>
-                <Text styles={labelFieldStyles}>
-                    This account is locked.Please see an agent for help.
-                </Text>
+                <Text styles={labelFieldStyles}>This account is locked.Please see an agent for help.</Text>
 
-                <DefaultButton
-                    text="Exit"
-                    onClick={() => router.back()}
-                    styles={exitButtonStyles}
-                />
+                <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
             </div>
         </Layout>
     );

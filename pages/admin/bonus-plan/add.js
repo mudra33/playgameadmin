@@ -166,11 +166,7 @@ const AddBonusPlan = (props) => {
                             {error}
                             <div className="ms-Grid" dir="ltr">
                                 <div className="ms-Grid-row">
-                                    <Stack
-                                        wrap
-                                        horizontal
-                                        styles={stackItemStyles}
-                                        tokens={stackTokens}>
+                                    <Stack wrap horizontal styles={stackItemStyles} tokens={stackTokens}>
                                         {props.data.sweepstakes < 1
                                             ? ''
                                             : props.data.sweepstakes.map((sweepstakes) => {
@@ -237,23 +233,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[0].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[0].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[0].maxBonus + 1;
-                                                formik.values.BonusEntries[0].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[0].maxBonus + 1;
+                                                formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[0].maxBonus - 1;
-                                                formik.values.BonusEntries[0].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[0].maxBonus - 1;
+                                                formik.values.BonusEntries[0].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -265,23 +256,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[1].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[1].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[1].maxBonus + 1;
-                                                formik.values.BonusEntries[1].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[1].maxBonus + 1;
+                                                formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[1].maxBonus - 1;
-                                                formik.values.BonusEntries[1].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[1].maxBonus - 1;
+                                                formik.values.BonusEntries[1].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -293,23 +279,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[2].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[2].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[2].maxBonus + 1;
-                                                formik.values.BonusEntries[2].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[2].maxBonus + 1;
+                                                formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[2].maxBonus - 1;
-                                                formik.values.BonusEntries[2].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[2].maxBonus - 1;
+                                                formik.values.BonusEntries[2].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -332,23 +313,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[3].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[3].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[3].maxBonus + 1;
-                                                formik.values.BonusEntries[3].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[3].maxBonus + 1;
+                                                formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[3].maxBonus - 1;
-                                                formik.values.BonusEntries[3].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[3].maxBonus - 1;
+                                                formik.values.BonusEntries[3].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -360,23 +336,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[4].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[4].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[4].maxBonus + 1;
-                                                formik.values.BonusEntries[4].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[4].maxBonus + 1;
+                                                formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[4].maxBonus - 1;
-                                                formik.values.BonusEntries[4].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[4].maxBonus - 1;
+                                                formik.values.BonusEntries[4].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -388,23 +359,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[5].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[5].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[5].maxBonus + 1;
-                                                formik.values.BonusEntries[5].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[5].maxBonus + 1;
+                                                formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[5].maxBonus - 1;
-                                                formik.values.BonusEntries[5].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[5].maxBonus - 1;
+                                                formik.values.BonusEntries[5].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -427,23 +393,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[6].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[6].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[6].maxBonus + 1;
-                                                formik.values.BonusEntries[6].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[6].maxBonus + 1;
+                                                formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[6].maxBonus - 1;
-                                                formik.values.BonusEntries[6].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[6].maxBonus - 1;
+                                                formik.values.BonusEntries[6].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -455,23 +416,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[7].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[7].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[7].maxBonus + 1;
-                                                formik.values.BonusEntries[7].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[7].maxBonus + 1;
+                                                formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[7].maxBonus - 1;
-                                                formik.values.BonusEntries[7].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[7].maxBonus - 1;
+                                                formik.values.BonusEntries[7].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                         <SpinButton
@@ -483,23 +439,18 @@ const AddBonusPlan = (props) => {
                                             {...formik.getFieldProps('BonusEntries[8].maxBonus')}
                                             onChange={(e, newValue) => {
                                                 if (newValue != undefined) {
-                                                    formik.values.BonusEntries[8].maxBonus =
-                                                        parseInt(newValue);
+                                                    formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
 
                                                     formik.handleChange(e);
                                                 }
                                             }}
                                             onIncrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[8].maxBonus + 1;
-                                                formik.values.BonusEntries[8].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[8].maxBonus + 1;
+                                                formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
                                             }}
                                             onDecrement={() => {
-                                                const newValue =
-                                                    formik.values.BonusEntries[8].maxBonus - 1;
-                                                formik.values.BonusEntries[8].maxBonus =
-                                                    parseInt(newValue);
+                                                const newValue = formik.values.BonusEntries[8].maxBonus - 1;
+                                                formik.values.BonusEntries[8].maxBonus = parseInt(newValue);
                                             }}
                                         />
                                     </div>
@@ -524,16 +475,8 @@ const AddBonusPlan = (props) => {
                             <div className="ms-Grid-col ms-sm6">
                                 <PrimaryButton
                                     type="submit"
-                                    text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Submit'
-                                        )
-                                    }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

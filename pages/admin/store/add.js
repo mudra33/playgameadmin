@@ -231,9 +231,7 @@ const NewStore = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -458,11 +456,7 @@ const NewStore = (props) => {
                         {error}
                         <div className="ms-Grid-row">
                             <div className="ms-Grid-col ms-sm10">
-                                <Stack
-                                    wrap
-                                    horizontal
-                                    styles={stackItemStyles}
-                                    tokens={stackTokens}>
+                                <Stack wrap horizontal styles={stackItemStyles} tokens={stackTokens}>
                                     {props.data.sweepstakes < 1
                                         ? ''
                                         : props.data.sweepstakes.map((sweepstakes) => {
@@ -486,16 +480,8 @@ const NewStore = (props) => {
                     <div className="ms-Grid-col ms-sm12">
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    'Submit'
-                                )
-                            }
-                            disabled={
-                                !formik.isValid || props.data.sweepstakes < 1 || formik.isSubmitting
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
+                            disabled={!formik.isValid || props.data.sweepstakes < 1 || formik.isSubmitting}
                         />
                     </div>
                 </div>
@@ -518,15 +504,12 @@ export async function getServerSideProps({ req }) {
     });
 
     sweepstakes = await sweepstakes.json();
-    let percentagePlan = await fetch(
-        `/api/percentage-plan`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let percentagePlan = await fetch(`/api/percentage-plan`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     percentagePlan = await percentagePlan.json();
 

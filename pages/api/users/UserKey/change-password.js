@@ -4,10 +4,7 @@ import bcrypt from 'bcrypt';
 const handler = async (req, res) => {
     try {
         if (req.method === 'PATCH') {
-            const user = await req
-                .db('Users')
-                .where({ UserKey: req.body.UserKey })
-                .select('UserPassword', 'UserKey');
+            const user = await req.db('Users').where({ UserKey: req.body.UserKey }).select('UserPassword', 'UserKey');
 
             if (user && user.length < 1)
                 return res.status(404).json({
@@ -27,10 +24,7 @@ const handler = async (req, res) => {
             const salt = bcrypt.genSaltSync(15);
             const hash = bcrypt.hashSync(req.body.NewUserPassword, salt);
 
-            await req
-                .db('Users')
-                .where({ UserKey: user[0].UserKey })
-                .update({ UserPassword: hash });
+            await req.db('Users').where({ UserKey: user[0].UserKey }).update({ UserPassword: hash });
 
             return res.status(200).send({ message: 'Password Changed Successfully.' });
         }

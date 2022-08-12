@@ -73,13 +73,9 @@ const EditManager = (props) => {
                     ? props.storeManager.data.UserLastName
                     : '',
             UserPhone:
-                props.storeManager.data && props.storeManager.data.UserPhone
-                    ? props.storeManager.data.UserPhone
-                    : '',
+                props.storeManager.data && props.storeManager.data.UserPhone ? props.storeManager.data.UserPhone : '',
             UserEmail:
-                props.storeManager.data && props.storeManager.data.UserEmail
-                    ? props.storeManager.data.UserEmail
-                    : '',
+                props.storeManager.data && props.storeManager.data.UserEmail ? props.storeManager.data.UserEmail : '',
             UserPassword: '',
         },
         validationSchema: Yup.object({
@@ -116,26 +112,23 @@ const EditManager = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/userKey/${props.storeManager.data.UserKey}`,
-                {
-                    body: JSON.stringify({
-                        UserFirstName: values.UserFirstName,
-                        UserLastName: values.UserLastName,
-                        UserPhone: values.UserPhone,
-                        UserEmail: values.UserEmail,
-                        UserPassword: values.UserPassword,
-                        UserKey_LastUpdatedBy: props.token.UserKey,
-                        UserKey_CreatedBy: props.token.UserKey,
-                        UserBlocked: selectedUserBlocked,
-                        ForcePasswordChange: selectedForcePasswordChange,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'PATCH',
-                }
-            );
+            const res = await fetch(`/api/users/userKey/${props.storeManager.data.UserKey}`, {
+                body: JSON.stringify({
+                    UserFirstName: values.UserFirstName,
+                    UserLastName: values.UserLastName,
+                    UserPhone: values.UserPhone,
+                    UserEmail: values.UserEmail,
+                    UserPassword: values.UserPassword,
+                    UserKey_LastUpdatedBy: props.token.UserKey,
+                    UserKey_CreatedBy: props.token.UserKey,
+                    UserBlocked: selectedUserBlocked,
+                    ForcePasswordChange: selectedForcePasswordChange,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'PATCH',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -177,11 +170,7 @@ const EditManager = (props) => {
                         <div className="ms-Grid" dir="ltr">
                             <div className="ms-Grid-row">
                                 <div className="ms-Grid-col ms-sm6">
-                                    <Dropdown
-                                        label="Store Name"
-                                        options={StoreName}
-                                        selectedKey={selectedStore.key}
-                                    />
+                                    <Dropdown label="Store Name" options={StoreName} selectedKey={selectedStore.key} />
                                 </div>
 
                                 <div className="ms-Grid-col ms-sm6"></div>
@@ -248,9 +237,7 @@ const EditManager = (props) => {
                                     setSelectedForcePasswordChange(item.key);
                                 }}
                                 defaultSelectedKey={
-                                    props.storeManager.data
-                                        ? props.storeManager.data.ForcePasswordChange
-                                        : ''
+                                    props.storeManager.data ? props.storeManager.data.ForcePasswordChange : ''
                                 }
                             />
 
@@ -273,11 +260,7 @@ const EditManager = (props) => {
                                 onChange={(event, item) => {
                                     setSelectedUserBlocked(item.key);
                                 }}
-                                defaultSelectedKey={
-                                    props.storeManager.data
-                                        ? props.storeManager.data.UserBlocked
-                                        : ''
-                                }
+                                defaultSelectedKey={props.storeManager.data ? props.storeManager.data.UserBlocked : ''}
                             />
                         </div>
 
@@ -286,15 +269,9 @@ const EditManager = (props) => {
                                 <PrimaryButton
                                     type="submit"
                                     text={
-                                        formik.isSubmitting ? (
-                                            <Spinner size={SpinnerSize.xSmall} />
-                                        ) : (
-                                            'Update Manager'
-                                        )
+                                        formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Update Manager'
                                     }
-                                    disabled={
-                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                    }
+                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                 />
                             </div>
                         </div>

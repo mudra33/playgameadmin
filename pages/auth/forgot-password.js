@@ -53,18 +53,15 @@ const ForgotPassword = () => {
                     messageBarType: 1,
                 });
             } else if (data.data && data.data.UserKey) {
-                const user = await fetch(
-                    `/api/users/reset-password`,
-                    {
-                        body: JSON.stringify({
-                            UserPhone: values.UserPhone,
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        method: 'POST',
-                    }
-                );
+                const user = await fetch(`/api/users/reset-password`, {
+                    body: JSON.stringify({
+                        UserPhone: values.UserPhone,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'POST',
+                });
                 const userReturned = await user.json();
 
                 if (userReturned.data && userReturned.data.UserKey) {
@@ -146,13 +143,7 @@ const ForgotPassword = () => {
                     <div className="ms-Grid-col ms-sm12 ms-xl12">
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    `Submit`
-                                )
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : `Submit`}
                             disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                         />
                     </div>

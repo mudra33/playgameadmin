@@ -170,9 +170,7 @@ const showBalance = () => {
                     }}>
                     <div className="ms-Grid-row">
                         <div className="ms-Grid-col ms-sm8 ms-md8 ms-lg8">
-                            <Label styles={labelFieldStyles}>
-                                Show Credit Balance on Cashier Screen?
-                            </Label>
+                            <Label styles={labelFieldStyles}>Show Credit Balance on Cashier Screen?</Label>
                         </div>
 
                         <div className="ms-Grid-col ms-sm4 ms-md4 ms-lg4">

@@ -83,23 +83,20 @@ const AddCredit = (props) => {
             if (!selectedStore) {
                 setError('No Store Found');
             } else {
-                const res = await fetch(
-                    '/api/store-transactions',
-                    {
-                        body: JSON.stringify({
-                            Total: values.Total,
-                            StoreKey: selectedStore,
-                            TransactionAmount: values.Amount,
-                            TransactionType: 'Credit',
-                            UserKey_LastUpdatedBy: props.token.UserKey,
-                            UserKey_CreatedBy: props.token.UserKey,
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        method: 'POST',
-                    }
-                );
+                const res = await fetch('/api/store-transactions', {
+                    body: JSON.stringify({
+                        Total: values.Total,
+                        StoreKey: selectedStore,
+                        TransactionAmount: values.Amount,
+                        TransactionType: 'Credit',
+                        UserKey_LastUpdatedBy: props.token.UserKey,
+                        UserKey_CreatedBy: props.token.UserKey,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'POST',
+                });
                 const result = await res.json();
                 if (res.ok && result) {
                     resetForm();
@@ -111,10 +108,7 @@ const AddCredit = (props) => {
     });
     return (
         <Layout title="Add Credit To Store">
-            <PageHeader
-                title="Add Credit To Store"
-                breadcrumb={[{ text: 'Home', key: 'home', href: '/admin/home' }]}
-            />
+            <PageHeader title="Add Credit To Store" breadcrumb={[{ text: 'Home', key: 'home', href: '/admin/home' }]} />
             <div className="ms-Grid" dir="ltr">
                 <div className="ms-Grid-row">
                     <div className="ms-Grid-col ms-sm6 ms-md5 ms-lg5">
@@ -122,9 +116,7 @@ const AddCredit = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -236,9 +228,7 @@ const AddCredit = (props) => {
                                                 `Submit Credit Changes`
                                             )
                                         }
-                                        disabled={
-                                            !(formik.isValid && formik.dirty) || formik.isSubmitting
-                                        }
+                                        disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                     />
                                 </div>
                             </div>
@@ -251,15 +241,12 @@ const AddCredit = (props) => {
 };
 
 async function fetchData(selectedStore) {
-    let storeTransactions = await fetch(
-        `/api/store-transactions?StoreKey=${selectedStore}`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let storeTransactions = await fetch(`/api/store-transactions?StoreKey=${selectedStore}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     storeTransactions = await storeTransactions.json();
 

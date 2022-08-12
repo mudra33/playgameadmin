@@ -80,9 +80,7 @@ const Submit = () => {
                     Please proceed to the cashier for <br /> payment.
                 </Text>
 
-                <Text styles={labelFieldStyles}>
-                    You will receive a text when your order is complete.
-                </Text>
+                <Text styles={labelFieldStyles}>You will receive a text when your order is complete.</Text>
 
                 <h2
                     style={{
@@ -96,11 +94,7 @@ const Submit = () => {
                     All Sales Are Final
                 </h2>
 
-                <PrimaryButton
-                    text="Close"
-                    onClick={() => router.push('/')}
-                    styles={buttonStyles}
-                />
+                <PrimaryButton text="Close" onClick={() => router.push('/')} styles={buttonStyles} />
             </form>
         </Layout>
     );

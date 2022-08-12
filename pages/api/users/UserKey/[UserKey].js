@@ -53,9 +53,7 @@ const handler = async (req, res) => {
             const data = await req.db('Users').where('UserKey', req.query.UserKey).update(user);
 
             if (data && data.length < 1)
-                return res
-                    .status(404)
-                    .json({ message: `User not found with UserKey - ${req.query.UserKey}` });
+                return res.status(404).json({ message: `User not found with UserKey - ${req.query.UserKey}` });
 
             return res.status(200).send({ message: 'Updated Successfully', data: data[0] });
         }
@@ -63,10 +61,7 @@ const handler = async (req, res) => {
         if (req.method === 'DELETE') {
             const data = await req.db('Users').where({ UserKey: req.query.UserKey }).del();
 
-            if (data < 1)
-                return res
-                    .status(404)
-                    .json({ message: `User not found with UserKey- ${req.query.UserKey}` });
+            if (data < 1) return res.status(404).json({ message: `User not found with UserKey- ${req.query.UserKey}` });
 
             return res.status(200).json({ message: 'Deleted Successfully' });
         }

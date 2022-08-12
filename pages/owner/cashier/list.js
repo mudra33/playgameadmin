@@ -50,24 +50,15 @@ const CashierListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
 
-                                        if (
-                                            props.session &&
-                                            props.session.user &&
-                                            props.session.user.StoreKey
-                                        ) {
-                                            const cashier = await fetchData(
-                                                props.session.user.StoreKey
-                                            );
+                                        if (props.session && props.session.user && props.session.user.StoreKey) {
+                                            const cashier = await fetchData(props.session.user.StoreKey);
                                             setCashierData(cashier.data);
                                         }
                                     },
@@ -134,15 +125,12 @@ const CashierListing = (props) => {
 };
 
 async function fetchData(StoreKey) {
-    let cashier = await fetch(
-        `/api/users?UserRole=Cashier&StoreKey=${StoreKey}`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let cashier = await fetch(`/api/users?UserRole=Cashier&StoreKey=${StoreKey}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
     cashier = await cashier.json();
 
     return cashier;

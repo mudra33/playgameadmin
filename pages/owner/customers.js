@@ -35,18 +35,15 @@ const Customers = (props) => {
                             optionsContainIconOrImage={false}
                             onChange={async (event, eventItem) => {
                                 setSelectedUserBlocked(eventItem.key);
-                                await fetch(
-                                    `/api/users/UserKey/${item.UserKey}`,
-                                    {
-                                        body: JSON.stringify({
-                                            UserBlocked: selectedUserBlocked,
-                                        }),
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        method: 'PATCH',
-                                    }
-                                );
+                                await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                    body: JSON.stringify({
+                                        UserBlocked: selectedUserBlocked,
+                                    }),
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    method: 'PATCH',
+                                });
                                 let blockedUsersData = await fetchData();
                                 setBlockedUsersData(blockedUsersData.data);
                             }}
@@ -141,15 +138,12 @@ const Customers = (props) => {
 };
 
 async function fetchData() {
-    let customer = await fetch(
-        `/api/users?UserRole=Customer`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let customer = await fetch(`/api/users?UserRole=Customer`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
 
     customer = await customer.json();
     return customer;

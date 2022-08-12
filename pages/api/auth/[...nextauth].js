@@ -31,10 +31,7 @@ export default NextAuth({
                         return null;
                     }
 
-                    const comparedValue = await compare(
-                        credentials.UserPassword,
-                        user.UserPassword
-                    );
+                    const comparedValue = await compare(credentials.UserPassword, user.UserPassword);
 
                     if (!comparedValue) {
                         return null;

@@ -118,9 +118,7 @@ const AddAdmin = () => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() =>
-                                    setNotification({ message: '', messageBarType: null })
-                                }
+                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
                             />
                         ) : (
                             ''
@@ -191,16 +189,9 @@ const AddAdmin = () => {
                                         <PrimaryButton
                                             type="submit"
                                             text={
-                                                formik.isSubmitting ? (
-                                                    <Spinner size={SpinnerSize.xSmall} />
-                                                ) : (
-                                                    'Submit'
-                                                )
+                                                formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'
                                             }
-                                            disabled={
-                                                !(formik.isValid && formik.dirty) ||
-                                                formik.isSubmitting
-                                            }
+                                            disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                                         />
                                     </div>
                                 </div>

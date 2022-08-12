@@ -63,15 +63,11 @@ const AccountExists = () => {
                     flexDirection: 'column',
                 }}>
                 <Text styles={labelFieldStyles}>
-                    An account already exists with this data. Only one account is allowed per
-                    person. Please log into your existing account, or see an agent for help
+                    An account already exists with this data. Only one account is allowed per person. Please log into
+                    your existing account, or see an agent for help
                 </Text>
 
-                <DefaultButton
-                    text="Exit"
-                    onClick={() => router.back()}
-                    styles={exitButtonStyles}
-                />
+                <DefaultButton text="Exit" onClick={() => router.back()} styles={exitButtonStyles} />
             </div>
         </Layout>
     );

@@ -68,29 +68,19 @@ const Countries = (props) => {
                         ? props.data.map((country) => {
                               return (
                                   <>
-                                      <div
-                                          className="ms-Grid-row"
-                                          style={{ paddingBottom: '20px' }}>
+                                      <div className="ms-Grid-row" style={{ paddingBottom: '20px' }}>
                                           <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
-                                              <Label style={labelStyles}>
-                                                  {country.CountryKey}
-                                              </Label>
+                                              <Label style={labelStyles}>{country.CountryKey}</Label>
                                           </div>
                                           <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
-                                              <Label style={labelStyles}>
-                                                  {country.CountryName}
-                                              </Label>
+                                              <Label style={labelStyles}>{country.CountryName}</Label>
                                           </div>
 
                                           <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
-                                              <Label style={labelStyles}>
-                                                  {country.CountryName}
-                                              </Label>
+                                              <Label style={labelStyles}>{country.CountryName}</Label>
                                           </div>
                                           <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
-                                              <Label style={labelStyles}>
-                                                  {country.CountryDescription}
-                                              </Label>
+                                              <Label style={labelStyles}>{country.CountryDescription}</Label>
                                           </div>
                                       </div>
                                   </>

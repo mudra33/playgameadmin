@@ -51,15 +51,12 @@ const ManagerListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let manager = await fetchData(props.session.user.StoreKey);
                                         setManagerData(manager.data);
                                     },
@@ -125,15 +122,12 @@ const ManagerListing = (props) => {
 };
 
 async function fetchData(StoreKey) {
-    let manager = await fetch(
-        `/api/users?UserRole=Manager&&StoreKey=${StoreKey}`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'GET',
-        }
-    );
+    let manager = await fetch(`/api/users?UserRole=Manager&&StoreKey=${StoreKey}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    });
     manager = await manager.json();
 
     return manager;

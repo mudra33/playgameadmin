@@ -35,10 +35,7 @@ exports.up = function (knex) {
             .onDelete('SET NULL')
             .unsigned();
         table.timestamp('CompanySweepstakesCreateTS').notNullable().defaultTo(knex.fn.now());
-        table
-            .timestamp('CompanySweepstakesLastUpdatedDateTime')
-            .notNullable()
-            .defaultTo(knex.fn.now());
+        table.timestamp('CompanySweepstakesLastUpdatedDateTime').notNullable().defaultTo(knex.fn.now());
         table.boolean('SweepstakesBlocked').notNullable().defaultTo(0);
         table.unique(['CompanyKey', 'SweepstakesKey']);
         table.index('CompanySweepstakesKey');

@@ -3,10 +3,7 @@ import connectionHandler from '../../../../src/config/connection-handler';
 const handler = async (req, res) => {
     try {
         if (req.method === 'GET') {
-            const data = await req
-                .db('Users')
-                .where({ UserKey: req.query.UserKey })
-                .select('UserPassword');
+            const data = await req.db('Users').where({ UserKey: req.query.UserKey }).select('UserPassword');
 
             if (data < 1)
                 return res.status(404).json({

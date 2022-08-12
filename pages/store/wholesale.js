@@ -128,19 +128,11 @@ const transactionReports = () => {
                 <div className="ms-Grid" dir="ltr" style={{ marginTop: '20px' }}>
                     <div className="ms-Grid-row">
                         <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6">
-                            <DatePicker
-                                styles={Datestyles}
-                                placeholder="From Date"
-                                borderless={true}
-                            />
+                            <DatePicker styles={Datestyles} placeholder="From Date" borderless={true} />
                         </div>
 
                         <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6">
-                            <DatePicker
-                                styles={Datestyles}
-                                placeholder="To Date"
-                                borderless={true}
-                            />
+                            <DatePicker styles={Datestyles} placeholder="To Date" borderless={true} />
                         </div>
                     </div>
                 </div>

@@ -35,20 +35,17 @@ const ResetPassword = (props) => {
                 .oneOf([Yup.ref('UserPassword'), null], 'Passwords must match'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(
-                `/api/users/change-password`,
-                {
-                    body: JSON.stringify({
-                        Token: props.router.query.Token,
-                        UserPassword: values.UserPassword,
-                        UserKey: props.router.query.UserKey,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'POST',
-                }
-            );
+            const res = await fetch(`/api/users/change-password`, {
+                body: JSON.stringify({
+                    Token: props.router.query.Token,
+                    UserPassword: values.UserPassword,
+                    UserKey: props.router.query.UserKey,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+            });
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -142,13 +139,7 @@ const ResetPassword = (props) => {
                         }}>
                         <PrimaryButton
                             type="submit"
-                            text={
-                                formik.isSubmitting ? (
-                                    <Spinner size={SpinnerSize.xSmall} />
-                                ) : (
-                                    'Submit'
-                                )
-                            }
+                            text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
                             disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
                         />
                     </div>
