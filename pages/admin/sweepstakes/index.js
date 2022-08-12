@@ -51,7 +51,7 @@ const SweepstakesListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-sweepstakes/${item.CompanySweepstakesKey}`,
+                                            `/api/company-sweepstakes/${item.CompanySweepstakesKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const SweepstakesListing = (props) => {
 
 async function fetchData() {
     let sweepstakes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-sweepstakes`,
+        `/api/company-sweepstakes`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ async function fetchData() {
 
 export async function getServerSideProps() {
     let sweepstakes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-sweepstakes`,
+        `/api/company-sweepstakes`,
         {
             headers: {
                 'Content-Type': 'application/json',

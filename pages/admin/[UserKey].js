@@ -78,7 +78,7 @@ const ViewEditAdmin = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${props.admin.data.UserKey}`,
+                `/api/users/UserKey/${props.admin.data.UserKey}`,
                 {
                     body: JSON.stringify({
                         UserFirstName: values.UserFirstName,
@@ -246,7 +246,7 @@ export async function getServerSideProps(context) {
     const { UserKey } = context.query;
 
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${UserKey}?UserRole=Admin`
+        `/api/users/UserKey/${UserKey}?UserRole=Admin`
     );
     const admin = await res.json();
     const token = await jwt.getToken({

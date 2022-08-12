@@ -37,7 +37,7 @@ const Signup = () => {
                 .required('Password Is required'),
         }),
         onSubmit: async (values) => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+            const res = await fetch(`/api/auth/signup`, {
                 body: JSON.stringify({
                     UserFirstName: values.UserFirstName,
                     UserLastName: values.UserLastName,

@@ -114,7 +114,7 @@ const EditBonusPlan = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bonus-plan/${props.data.bonusPlans.data.BonusPlanKey}`,
+                `/api/bonus-plan/${props.data.bonusPlans.data.BonusPlanKey}`,
                 {
                     body: JSON.stringify({
                         BonusPlanName: values.BonusPlanName,
@@ -602,7 +602,7 @@ export async function getServerSideProps(context) {
 
     const { BonusPlanKey } = context.query;
     let bonusPlans = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bonus-plan/${BonusPlanKey}`,
+        `/api/bonus-plan/${BonusPlanKey}`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -613,7 +613,7 @@ export async function getServerSideProps(context) {
 
     bonusPlans = await bonusPlans.json();
 
-    let sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+    let sweepstakes = await fetch(`/api/sweepstakes`, {
         headers: {
             'Content-Type': 'application/json',
         },

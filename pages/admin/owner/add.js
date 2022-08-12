@@ -73,7 +73,7 @@ const AddOwner = (props) => {
                 .required('User Password is required'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
+            const user = await fetch(`/api/users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                     UserEmail: values.UserEmail,
@@ -94,7 +94,7 @@ const AddOwner = (props) => {
                 return;
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users`, {
+            const res = await fetch(`/api/store-users`, {
                 body: JSON.stringify({
                     StoreKey: selectedStore.key,
                     UserFirstName: values.UserFirstName,
@@ -267,7 +267,7 @@ export async function getServerSideProps({ req }) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let store = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

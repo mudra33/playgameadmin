@@ -117,7 +117,7 @@ const EditManager = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/userKey/${props.storeManager.data.UserKey}`,
+                `/api/users/userKey/${props.storeManager.data.UserKey}`,
                 {
                     body: JSON.stringify({
                         UserFirstName: values.UserFirstName,
@@ -307,14 +307,14 @@ const EditManager = (props) => {
 
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users/${UserKey}`);
+    const res = await fetch(`/api/store-users/${UserKey}`);
     const storeManager = await res.json();
     const token = await jwt.getToken({
         req: context.req,
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let store = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

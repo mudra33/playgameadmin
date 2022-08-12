@@ -51,7 +51,7 @@ const PercentagePlanListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan/${item.PercentagePlanKey}`,
+                                            `/api/percentage-plan/${item.PercentagePlanKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const PercentagePlanListing = (props) => {
 
 async function fetchData() {
     let percentagePlan = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan`,
+        `/api/percentage-plan`,
         {
             headers: {
                 'Content-Type': 'application/json',

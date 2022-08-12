@@ -51,7 +51,7 @@ const StoreListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store/${item.StoreKey}`,
+                                            `/api/store/${item.StoreKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ const StoreListing = (props) => {
     ];
 
     async function fetchData() {
-        let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+        let store = await fetch(`/api/store`, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -162,7 +162,7 @@ const StoreListing = (props) => {
 };
 
 export async function getServerSideProps() {
-    let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let store = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

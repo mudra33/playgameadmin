@@ -106,7 +106,7 @@ const Countries = (props) => {
 };
 
 export async function getServerSideProps() {
-    let country = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/country`, {
+    let country = await fetch(`/api/country`, {
         headers: {
             'Content-Type': 'application/json',
         },

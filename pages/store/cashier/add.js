@@ -50,7 +50,7 @@ const AddCashier = () => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const user = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${values.UserPhone}`,
+                `/api/users/${values.UserPhone}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const AddCashier = () => {
                 return;
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+            const res = await fetch(`/api/auth/signup`, {
                 body: JSON.stringify({
                     UserRole: 'Cashier',
                     UserFirstName: values.UserFirstName,

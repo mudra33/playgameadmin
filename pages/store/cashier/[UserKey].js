@@ -80,7 +80,7 @@ const ViewEditCashier = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/userKey/${props.cashier.data.UserKey}`,
+                `/api/users/userKey/${props.cashier.data.UserKey}`,
                 {
                     body: JSON.stringify({
                         UserFirstName: values.UserFirstName,
@@ -247,7 +247,7 @@ const ViewEditCashier = (props) => {
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/userKey/${UserKey}`);
+    const res = await fetch(`/api/users/userKey/${UserKey}`);
     const cashier = await res.json();
     const token = await jwt.getToken({
         req: context.req,

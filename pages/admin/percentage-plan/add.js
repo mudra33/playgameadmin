@@ -46,7 +46,7 @@ const AddPercentageplan = (props) => {
                 .max(50, 'Too long! Maximum allowed length is 50'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan`, {
+            const res = await fetch(`/api/percentage-plan`, {
                 body: JSON.stringify({
                     PercentagePlanName: values.PercentagePlanName,
                     PurchasePercentage: values.PurchasePercentage,

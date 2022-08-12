@@ -73,7 +73,7 @@ const AddManager = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const user = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${values.UserPhone}`,
+                `/api/users/${values.UserPhone}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const AddManager = (props) => {
                 return;
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users`, {
+            const res = await fetch(`/api/store-users`, {
                 body: JSON.stringify({
                     StoreKey: selectedStore.key,
                     UserFirstName: values.UserFirstName,
@@ -262,7 +262,7 @@ export async function getServerSideProps({ req }) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let store = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

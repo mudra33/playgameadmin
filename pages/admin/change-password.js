@@ -48,7 +48,7 @@ const ChangePassword = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/change-password`,
+                `/api/users/UserKey/change-password`,
                 {
                     body: JSON.stringify({
                         UserKey: props.session.user.UserKey,

@@ -173,7 +173,7 @@ const NewStore = (props) => {
             } else {
                 setError('');
             }
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+            const res = await fetch(`/api/store`, {
                 body: JSON.stringify({
                     StoreName: values.StoreName,
                     StorePhone: values.StorePhone,
@@ -510,7 +510,7 @@ export async function getServerSideProps({ req }) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+    let sweepstakes = await fetch(`/api/sweepstakes`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -519,7 +519,7 @@ export async function getServerSideProps({ req }) {
 
     sweepstakes = await sweepstakes.json();
     let percentagePlan = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan`,
+        `/api/percentage-plan`,
         {
             headers: {
                 'Content-Type': 'application/json',

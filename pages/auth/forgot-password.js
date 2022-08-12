@@ -28,7 +28,7 @@ const ForgotPassword = () => {
                 .max(10, 'Too short! Minimum allowed length is 10'),
         }),
         onSubmit: async (values) => {
-            const user = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
+            const user = await fetch(`/api/users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                 }),
@@ -54,7 +54,7 @@ const ForgotPassword = () => {
                 });
             } else if (data.data && data.data.UserKey) {
                 const user = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/reset-password`,
+                    `/api/users/reset-password`,
                     {
                         body: JSON.stringify({
                             UserPhone: values.UserPhone,

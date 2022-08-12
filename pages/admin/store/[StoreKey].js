@@ -231,7 +231,7 @@ const EditStore = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store/${props.store.data.StoreKey}`,
+                `/api/store/${props.store.data.StoreKey}`,
                 {
                     body: JSON.stringify({
                         StoreName: values.StoreName,
@@ -604,11 +604,11 @@ const EditStore = (props) => {
 export async function getServerSideProps(context) {
     const { StoreKey } = context.query;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store/${StoreKey}`);
+    const res = await fetch(`/api/store/${StoreKey}`);
     const store = await res.json();
 
     let percentagePlan = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan`,
+        `/api/percentage-plan`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -619,7 +619,7 @@ export async function getServerSideProps(context) {
 
     percentagePlan = await percentagePlan.json();
 
-    let sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+    let sweepstakes = await fetch(`/api/sweepstakes`, {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -109,7 +109,7 @@ const AddFulfilment = (props) => {
             if (!selectedKeys) {
                 setError('No Company Name Found');
             } else {
-                const user = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
+                const user = await fetch(`/api/users`, {
                     body: JSON.stringify({
                         UserPhone: values.UserPhone,
                         UserEmail: values.UserEmail,
@@ -130,7 +130,7 @@ const AddFulfilment = (props) => {
                     return;
                 }
 
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/fulfillment`, {
+                const res = await fetch(`/api/fulfillment`, {
                     body: JSON.stringify({
                         CompanyNames: selectedKeys,
                         UserFirstName: values.UserFirstName,
@@ -315,7 +315,7 @@ export async function getServerSideProps({ req }) {
         encryption: true,
     });
 
-    let company = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company`, {
+    let company = await fetch(`/api/company`, {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -51,7 +51,7 @@ const OwnerListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${item.UserKey}`,
+                                            `/api/users/UserKey/${item.UserKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ const OwnerListing = (props) => {
 };
 
 async function fetchData() {
-    let owner = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Owner`, {
+    let owner = await fetch(`/api/users?UserRole=Owner`, {
         headers: {
             'Content-Type': 'application/json',
         },

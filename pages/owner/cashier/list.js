@@ -51,7 +51,7 @@ const CashierListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${item.UserKey}`,
+                                            `/api/users/UserKey/${item.UserKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ const CashierListing = (props) => {
 
 async function fetchData(StoreKey) {
     let cashier = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Cashier&StoreKey=${StoreKey}`,
+        `/api/users?UserRole=Cashier&StoreKey=${StoreKey}`,
         {
             headers: {
                 'Content-Type': 'application/json',

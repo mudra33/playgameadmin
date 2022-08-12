@@ -135,7 +135,7 @@ const ViewEditFulfilment = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-users/${props.data.fulfilment.data.UserKey}`,
+                `/api/company-users/${props.data.fulfilment.data.UserKey}`,
                 {
                     body: JSON.stringify({
                         CompanyKey: selectedCompany.key,
@@ -327,7 +327,7 @@ export async function getServerSideProps(context) {
         encryption: true,
     });
 
-    let company = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company`, {
+    let company = await fetch(`/api/company`, {
         headers: {
             'Content-Type': 'application/json',
         },

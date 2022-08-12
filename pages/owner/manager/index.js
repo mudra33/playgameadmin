@@ -52,7 +52,7 @@ const ManagerListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${item.UserKey}`,
+                                            `/api/users/UserKey/${item.UserKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const ManagerListing = (props) => {
 
 async function fetchData(StoreKey) {
     let manager = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Manager&&StoreKey=${StoreKey}`,
+        `/api/users?UserRole=Manager&&StoreKey=${StoreKey}`,
         {
             headers: {
                 'Content-Type': 'application/json',

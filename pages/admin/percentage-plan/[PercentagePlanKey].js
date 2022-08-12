@@ -61,7 +61,7 @@ const ViewEditPercentagePlan = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan/${props.percentagePlan.data.PercentagePlanKey}`,
+                `/api/percentage-plan/${props.percentagePlan.data.PercentagePlanKey}`,
                 {
                     body: JSON.stringify({
                         PercentagePlanName: values.PercentagePlanName,
@@ -177,7 +177,7 @@ const ViewEditPercentagePlan = (props) => {
 export async function getServerSideProps(context) {
     const { PercentagePlanKey } = context.query;
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/percentage-plan/${PercentagePlanKey}`
+        `/api/percentage-plan/${PercentagePlanKey}`
     );
     const percentagePlan = await res.json();
     return { props: { percentagePlan } };

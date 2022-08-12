@@ -102,7 +102,7 @@ const AddSweepstakes = (props) => {
             if (selectedKeys && selectedKeys.length < 1) {
                 setError('No Company Name Found');
             } else {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+                const res = await fetch(`/api/sweepstakes`, {
                     body: JSON.stringify({
                         CompanyNames: selectedKeys,
                         SweepstakesNames: selectedSweepstakes,
@@ -220,14 +220,14 @@ export async function getServerSideProps({ req }) {
         encryption: true,
     });
 
-    let company = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company`, {
+    let company = await fetch(`/api/company`, {
         headers: {
             'Content-Type': 'application/json',
         },
         method: 'GET',
     });
 
-    let sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+    let sweepstakes = await fetch(`/api/sweepstakes`, {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -57,7 +57,7 @@ const AddCashier = (props) => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users`, {
+            const user = await fetch(`/api/store-users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                     UserEmail: values.UserEmail,
@@ -78,7 +78,7 @@ const AddCashier = (props) => {
                 return;
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users`, {
+            const res = await fetch(`/api/store-users`, {
                 body: JSON.stringify({
                     StoreKey: session.user.StoreKey,
                     UserRole: 'Cashier',

@@ -51,7 +51,7 @@ const AddAdmin = () => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
+            const user = await fetch(`/api/users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                     UserEmail: values.UserEmail,
@@ -72,7 +72,7 @@ const AddAdmin = () => {
                 return;
             }
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+            const res = await fetch(`/api/auth/signup`, {
                 body: JSON.stringify({
                     UserRole: 'Admin',
                     UserFirstName: values.UserFirstName,

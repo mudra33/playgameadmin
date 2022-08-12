@@ -84,7 +84,7 @@ const AddCredit = (props) => {
                 setError('No Store Found');
             } else {
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-transactions`,
+                    '/api/store-transactions',
                     {
                         body: JSON.stringify({
                             Total: values.Total,
@@ -252,7 +252,7 @@ const AddCredit = (props) => {
 
 async function fetchData(selectedStore) {
     let storeTransactions = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-transactions?StoreKey=${selectedStore}`,
+        `/api/store-transactions?StoreKey=${selectedStore}`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ export async function getServerSideProps({ req }) {
         encryption: true,
     });
 
-    let stores = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let stores = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

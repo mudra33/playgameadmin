@@ -53,7 +53,7 @@ const ShowBalance = () => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store/show-balance/${session.user.StoreKey}`,
+                `/api/store/show-balance/${session.user.StoreKey}`,
                 {
                     body: JSON.stringify({
                         Settings: [

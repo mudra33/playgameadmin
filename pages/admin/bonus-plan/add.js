@@ -89,7 +89,7 @@ const AddBonusPlan = (props) => {
             if (values.Sweepstakes && values.Sweepstakes.length < 1) {
                 setError('No Sweepstake Found');
             } else {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bonus-plan`, {
+                const res = await fetch(`/api/bonus-plan`, {
                     body: JSON.stringify({
                         BonusPlanName: values.BonusPlanName,
                         Comments: values.Comments,
@@ -550,7 +550,7 @@ export async function getServerSideProps({ req }) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`, {
+    let sweepstakes = await fetch(`/api/sweepstakes`, {
         headers: {
             'Content-Type': 'application/json',
         },

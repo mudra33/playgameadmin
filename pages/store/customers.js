@@ -47,7 +47,7 @@ const Customers = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/userKey/${item.UserKey}`,
+                                            `/api/users/userKey/${item.UserKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ const Customers = (props) => {
                             onChange={async (event, eventItem) => {
                                 setSelectedUserBlocked(eventItem.key);
                                 await fetch(
-                                    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/userKey/${item.UserKey}`,
+                                    `/api/users/userKey/${item.UserKey}`,
                                     {
                                         body: JSON.stringify({
                                             UserBlocked: selectedUserBlocked,
@@ -159,7 +159,7 @@ const Customers = (props) => {
 
 async function fetchData() {
     let customer = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Customer&UserKey=" "`,
+        `/api/users?UserRole=Customer&UserKey=" "`,
         {
             headers: {
                 'Content-Type': 'application/json',

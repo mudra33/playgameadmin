@@ -106,7 +106,7 @@ const EditOwnerManager = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${props.owner.data.UserKey}`,
+                `/api/users/UserKey/${props.owner.data.UserKey}`,
                 {
                     body: JSON.stringify({
                         UserFirstName: values.UserFirstName,
@@ -294,7 +294,7 @@ const EditOwnerManager = (props) => {
 export async function getServerSideProps(context) {
     const { UserKey } = context.query;
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store-users/${UserKey}?UserRole=Owner`
+        `/api/store-users/${UserKey}?UserRole=Owner`
     );
     const owner = await res.json();
 
@@ -303,7 +303,7 @@ export async function getServerSideProps(context) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let store = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/store`, {
+    let store = await fetch(`/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },

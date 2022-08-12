@@ -51,7 +51,7 @@ const BonusPlanListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bonus-plan/${item.BonusPlanKey}`,
+                                            `/api/bonus-plan/${item.BonusPlanKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const BonusPlanListing = (props) => {
 };
 
 async function fetchData() {
-    let bonusPlan = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bonus-plan`, {
+    let bonusPlan = await fetch(`/api/bonus-plan`, {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -36,7 +36,7 @@ const Customers = (props) => {
                             onChange={async (event, eventItem) => {
                                 setSelectedUserBlocked(eventItem.key);
                                 await fetch(
-                                    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${item.UserKey}`,
+                                    `/api/users/UserKey/${item.UserKey}`,
                                     {
                                         body: JSON.stringify({
                                             UserBlocked: selectedUserBlocked,
@@ -142,7 +142,7 @@ const Customers = (props) => {
 
 async function fetchData() {
     let customer = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Customer`,
+        `/api/users?UserRole=Customer`,
         {
             headers: {
                 'Content-Type': 'application/json',

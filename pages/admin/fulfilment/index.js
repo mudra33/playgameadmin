@@ -51,7 +51,7 @@ const FulfilmentListing = (props) => {
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
                                         await fetch(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/UserKey/${item.UserKey}`,
+                                            `/api/users/UserKey/${item.UserKey}`,
                                             {
                                                 headers: {
                                                     'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const FulfilmentListing = (props) => {
 
 async function fetchData() {
     let fulfilment = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?UserRole=Fulfilment`,
+        `/api/users?UserRole=Fulfilment`,
         {
             headers: {
                 'Content-Type': 'application/json',
