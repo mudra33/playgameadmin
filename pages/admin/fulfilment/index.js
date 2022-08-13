@@ -43,7 +43,7 @@ const FulfilmentListing = (props) => {
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
                                         router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/fulfilment/${item.UserKey}`
+                                            `/admin/fulfilment/${item.UserKey}`
                                         ),
                                 },
                                 {

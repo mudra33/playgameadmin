@@ -42,7 +42,7 @@ const CashierListing = (props) => {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
-                                        router.push(`${process.env.NEXT_PUBLIC_API_BASE_URL}/cashier/${item.UserKey}`),
+                                        router.push(`/cashier/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',

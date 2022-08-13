@@ -44,7 +44,7 @@ const ManagerListing = (props) => {
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
                                         router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/owner/manager/${item.UserKey}`
+                                            `/owner/manager/${item.UserKey}`
                                         ),
                                 },
                                 {

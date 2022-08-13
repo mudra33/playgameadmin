@@ -43,7 +43,7 @@ const BonusPlanListing = (props) => {
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
                                         router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/bonus-plan/${item.BonusPlanKey}`
+                                            `/admin/bonus-plan/${item.BonusPlanKey}`
                                         ),
                                 },
                                 {

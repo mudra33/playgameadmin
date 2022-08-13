@@ -42,7 +42,7 @@ const AdminListing = (props) => {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
-                                        router.push(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/${item.UserKey}`),
+                                        router.push(`/admin/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',

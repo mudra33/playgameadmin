@@ -299,7 +299,7 @@ const ViewEditFulfilment = (props) => {
 
 export async function getServerSideProps(context) {
     const { FulfilmentKey } = context.query;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-users/${FulfilmentKey}`);
+    const res = await fetch(`/api/company-users/${FulfilmentKey}`);
     const fulfilment = await res.json();
 
     const token = await jwt.getToken({

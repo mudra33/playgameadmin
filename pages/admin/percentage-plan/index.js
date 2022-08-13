@@ -43,7 +43,7 @@ const PercentagePlanListing = (props) => {
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
                                         router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/percentage-plan/${item.PercentagePlanKey}`
+                                            `/admin/percentage-plan/${item.PercentagePlanKey}`
                                         ),
                                 },
                                 {

@@ -100,7 +100,7 @@ const ViewSweepstake = (props) => {
         }),
         onSubmit: async (values, { resetForm }) => {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-sweepstakes/${props.data.CompanySweepstakes[0].CompanySweepstakesKey}`,
+                `/api/company-sweepstakes/${props.data.CompanySweepstakes[0].CompanySweepstakesKey}`,
                 {
                     body: JSON.stringify({
                         SweepstakesKey: selectedSweepstakes.key,
@@ -234,14 +234,14 @@ const ViewSweepstake = (props) => {
 export async function getServerSideProps(context) {
     const { SweepstakesKey } = context.query;
     let CompanySweepstakes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company-sweepstakes/${SweepstakesKey}`
+        `/api/company-sweepstakes/${SweepstakesKey}`
     );
     CompanySweepstakes = await CompanySweepstakes.json();
 
-    let Sweepstakes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sweepstakes`);
+    let Sweepstakes = await fetch(`/api/sweepstakes`);
     Sweepstakes = await Sweepstakes.json();
 
-    let Company = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/company`);
+    let Company = await fetch(`/api/company`);
     Company = await Company.json();
 
     const token = await jwt.getToken({

@@ -43,7 +43,7 @@ const SweepstakesListing = (props) => {
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
                                         router.push(
-                                            `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/sweepstakes/${item.CompanySweepstakesKey}`
+                                            `/admin/sweepstakes/${item.CompanySweepstakesKey}`
                                         ),
                                 },
                                 {
