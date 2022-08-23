@@ -25,7 +25,7 @@ module.exports = {
     ],
     plugins: ['simple-import-sort'],
     rules: {
-        'prettier/prettier': ['error', { printWidth: 120 }, { usePrettierrc: true }], // Use our .prettierrc file as source
+        'prettier/prettier': ['warn', { printWidth: 120 }, { usePrettierrc: true }], // Use our .prettierrc file as source
         'react/react-in-jsx-scope': 'off',
         'react/display-name': 'off',
         'jsx-a11y/anchor-is-valid': [
