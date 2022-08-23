@@ -41,10 +41,7 @@ const OwnerListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(
-                                            `/admin/owner/${item.UserKey}`
-                                        ),
+                                    onClick: () => router.push(`/admin/owner/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',

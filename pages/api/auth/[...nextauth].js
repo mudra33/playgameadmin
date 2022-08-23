@@ -6,7 +6,7 @@ import Providers from 'next-auth/providers';
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
     // https://next-auth.js.org/configuration/providers
-    site: process.env.NEXTAUTH_URL ,
+    site: process.env.NEXTAUTH_URL,
     providers: [
         Providers.Credentials({
             // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -32,7 +32,10 @@ export default NextAuth({
                         return null;
                     }
 
-                    const comparedValue = await compare(credentials.UserPassword, user.UserPassword);
+                    const comparedValue = await compare(
+                        credentials.UserPassword,
+                        user.UserPassword
+                    );
 
                     if (!comparedValue) {
                         return null;

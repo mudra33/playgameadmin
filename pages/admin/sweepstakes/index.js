@@ -50,12 +50,15 @@ const SweepstakesListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(`/api/company-sweepstakes/${item.CompanySweepstakesKey}`, {
-                                            headers: {
-                                                'Content-Type': 'application/json',
-                                            },
-                                            method: 'DELETE',
-                                        });
+                                        await fetch(
+                                            `/api/company-sweepstakes/${item.CompanySweepstakesKey}`,
+                                            {
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                                method: 'DELETE',
+                                            }
+                                        );
                                         let sweepstakes = await fetchData();
                                         setSweepstakesData(sweepstakes.data);
                                     },

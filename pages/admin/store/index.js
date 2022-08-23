@@ -41,10 +41,7 @@ const StoreListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(
-                                            `/admin/store/${item.StoreKey}`
-                                        ),
+                                    onClick: () => router.push(`/admin/store/${item.StoreKey}`),
                                 },
                                 {
                                     key: 'delete',

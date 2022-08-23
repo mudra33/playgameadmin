@@ -41,10 +41,7 @@ const FulfilmentListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(
-                                            `/admin/fulfilment/${item.UserKey}`
-                                        ),
+                                    onClick: () => router.push(`/admin/fulfilment/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',

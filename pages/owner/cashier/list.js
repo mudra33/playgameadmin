@@ -41,10 +41,7 @@ const CashierListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(
-                                            `/owner/cashier/${item.UserKey}`
-                                        ),
+                                    onClick: () => router.push(`/owner/cashier/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',
@@ -57,8 +54,14 @@ const CashierListing = (props) => {
                                             method: 'DELETE',
                                         });
 
-                                        if (props.session && props.session.user && props.session.user.StoreKey) {
-                                            const cashier = await fetchData(props.session.user.StoreKey);
+                                        if (
+                                            props.session &&
+                                            props.session.user &&
+                                            props.session.user.StoreKey
+                                        ) {
+                                            const cashier = await fetchData(
+                                                props.session.user.StoreKey
+                                            );
                                             setCashierData(cashier.data);
                                         }
                                     },

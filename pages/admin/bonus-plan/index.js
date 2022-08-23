@@ -42,9 +42,7 @@ const BonusPlanListing = (props) => {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
                                     onClick: () =>
-                                        router.push(
-                                            `/admin/bonus-plan/${item.BonusPlanKey}`
-                                        ),
+                                        router.push(`/admin/bonus-plan/${item.BonusPlanKey}`),
                                 },
                                 {
                                     key: 'delete',

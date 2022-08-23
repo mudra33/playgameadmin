@@ -192,7 +192,8 @@ const ViewSweepstake = (props) => {
                         <ChoiceGroup
                             options={UserBlockedoptions}
                             defaultSelectedKey={
-                                props.data.CompanySweepstakes[0] && props.data.CompanySweepstakes[0].SweepstakesBlocked
+                                props.data.CompanySweepstakes[0] &&
+                                props.data.CompanySweepstakes[0].SweepstakesBlocked
                                     ? props.data.CompanySweepstakes[0].SweepstakesBlocked
                                     : ''
                             }
@@ -233,9 +234,7 @@ const ViewSweepstake = (props) => {
 
 export async function getServerSideProps(context) {
     const { SweepstakesKey } = context.query;
-    let CompanySweepstakes = await fetch(
-        `/api/company-sweepstakes/${SweepstakesKey}`
-    );
+    let CompanySweepstakes = await fetch(`/api/company-sweepstakes/${SweepstakesKey}`);
     CompanySweepstakes = await CompanySweepstakes.json();
 
     let Sweepstakes = await fetch(`/api/sweepstakes`);

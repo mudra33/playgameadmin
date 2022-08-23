@@ -41,8 +41,7 @@ const CashierListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(`/cashier/${item.UserKey}`),
+                                    onClick: () => router.push(`/cashier/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',
@@ -55,7 +54,9 @@ const CashierListing = (props) => {
                                             method: 'DELETE',
                                         });
                                         let cashier = await fetchData(
-                                            props.session && props.session.user && props.session.user.UserKey
+                                            props.session &&
+                                                props.session.user &&
+                                                props.session.user.UserKey
                                                 ? props.session.user.UserKey
                                                 : ''
                                         );

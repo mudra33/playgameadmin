@@ -41,8 +41,7 @@ const AdminListing = (props) => {
                                 {
                                     key: 'edit',
                                     iconProps: { iconName: 'Edit' },
-                                    onClick: () =>
-                                        router.push(`/admin/${item.UserKey}`),
+                                    onClick: () => router.push(`/admin/${item.UserKey}`),
                                 },
                                 {
                                     key: 'delete',
@@ -55,7 +54,9 @@ const AdminListing = (props) => {
                                             method: 'DELETE',
                                         });
                                         let admin = await fetchData(
-                                            props.session && props.session.user && props.session.user.UserKey
+                                            props.session &&
+                                                props.session.user &&
+                                                props.session.user.UserKey
                                                 ? props.session.user.UserKey
                                                 : ''
                                         );
