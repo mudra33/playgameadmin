@@ -6,6 +6,7 @@ import Providers from 'next-auth/providers';
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
     // https://next-auth.js.org/configuration/providers
+    site: process.env.NEXTAUTH_URL ,
     providers: [
         Providers.Credentials({
             // The name to display on the sign in form (e.g. 'Sign in with...')
