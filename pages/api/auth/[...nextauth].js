@@ -151,12 +151,11 @@ export default NextAuth({
                     token.user.StoreKey = StoreKey;
                 }
             }
-
             return token;
         },
         async signIn(user) {
             // throw `${process.env.NEXTAUTH_URL}/${user.RoleName.toLowerCase()}/home`;
-            if (user && user.UserBlocked) return false;
+            // if (user && user.UserBlocked) return false;
 
             if (user && user.RoleName) return true;
             // throw `${process.env.NEXTAUTH_URL}/${user.RoleName.toLowerCase()}/home`;
