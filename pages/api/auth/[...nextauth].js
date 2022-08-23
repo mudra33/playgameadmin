@@ -44,6 +44,7 @@ export default NextAuth({
                     delete user.UserPassword;
                     return user;
                 } catch (error) {
+                    console.log(error);
                     throw new Error('Oops! Something went wrong!');
                 }
             },
