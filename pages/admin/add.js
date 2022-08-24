@@ -11,6 +11,7 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 
 const AddAdmin = () => {
     const router = useRouter();
+    const prodURL = process.env.NEXTAUTH_URL;
     const [notification, setNotification] = useState({
         message: '',
         messageBarType: '',
@@ -51,7 +52,7 @@ const AddAdmin = () => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(`/api/users`, {
+            const user = await fetch(prodURL + `/api/users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                     UserEmail: values.UserEmail,
@@ -72,7 +73,7 @@ const AddAdmin = () => {
                 return;
             }
 
-            const res = await fetch(`/api/auth/signup`, {
+            const res = await fetch(prodURL + `/api/auth/signup`, {
                 body: JSON.stringify({
                     UserRole: 'Admin',
                     UserFirstName: values.UserFirstName,
@@ -91,7 +92,7 @@ const AddAdmin = () => {
             if (res.ok && result && result.data) {
                 resetForm();
                 setNotification({ message: result.message, messageBarType: 4 });
-                router.push('/admin/list');
+                router.push(prodURL + '/admin/list');
             }
         },
     });
@@ -118,7 +119,9 @@ const AddAdmin = () => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
+                                onDismiss={() =>
+                                    setNotification({ message: '', messageBarType: null })
+                                }
                             />
                         ) : (
                             ''
@@ -189,9 +192,16 @@ const AddAdmin = () => {
                                         <PrimaryButton
                                             type="submit"
                                             text={
-                                                formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'
+                                                formik.isSubmitting ? (
+                                                    <Spinner size={SpinnerSize.xSmall} />
+                                                ) : (
+                                                    'Submit'
+                                                )
                                             }
-                                            disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
+                                            disabled={
+                                                !(formik.isValid && formik.dirty) ||
+                                                formik.isSubmitting
+                                            }
                                         />
                                     </div>
                                 </div>
