@@ -5,6 +5,7 @@ import { CommandBar } from '@fluentui/react';
 import Layout from '../../../components/Layout/Post';
 import PageHeader from '../../../components/PageHeader';
 import DetailsList from '../../../components/DetailsList';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const OwnerListing = (props) => {
     const router = useRouter();
@@ -53,7 +54,7 @@ const OwnerListing = (props) => {
                                             },
                                             method: 'DELETE',
                                         });
-                                        let owner = fetchData();
+                                        let owner = fetchData('');
                                         setOwnerData(owner.data);
                                     },
                                 },
@@ -117,8 +118,8 @@ const OwnerListing = (props) => {
     );
 };
 
-async function fetchData() {
-    let owner = await fetch(`/api/users?UserRole=Owner`, {
+async function fetchData(prodURL) {
+    let owner = await fetch(prodURL + `/api/users?UserRole=Owner`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -130,7 +131,7 @@ async function fetchData() {
 }
 
 export async function getServerSideProps() {
-    const owner = await fetchData();
+    const owner = await fetchData(prodURL);
 
     return {
         props: {
