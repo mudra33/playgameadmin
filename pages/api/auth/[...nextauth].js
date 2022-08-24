@@ -156,7 +156,7 @@ export default NextAuth({
         async signIn(user) {
             // throw `${process.env.NEXTAUTH_URL}/${user.RoleName.toLowerCase()}/home`;
             // if (user && user.UserBlocked) return false;
-
+            console.log('user rolename', user.RoleName);
             if (user && user.RoleName) return true;
             // throw `${process.env.NEXTAUTH_URL}/${user.RoleName.toLowerCase()}/home`;
             return false;
