@@ -9,6 +9,7 @@ import { Spinner, SpinnerSize } from '@fluentui/react';
 import MessageBar from '../../../components/MessageBar';
 import PageHeader from '../../../components/PageHeader';
 import PrimaryButton from '../../../components/Button/PrimaryButton';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const ViewEditPercentagePlan = (props) => {
     const router = useRouter();
@@ -60,17 +61,20 @@ const ViewEditPercentagePlan = (props) => {
                 .max(50, 'Too long! Maximum allowed length is 50'),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const res = await fetch(`/api/percentage-plan/${props.percentagePlan.data.PercentagePlanKey}`, {
-                body: JSON.stringify({
-                    PercentagePlanName: values.PercentagePlanName,
-                    PurchasePercentage: values.PurchasePercentage,
-                    Comments: values.Comments,
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                method: 'PATCH',
-            });
+            const res = await fetch(
+                `/api/percentage-plan/${props.percentagePlan.data.PercentagePlanKey}`,
+                {
+                    body: JSON.stringify({
+                        PercentagePlanName: values.PercentagePlanName,
+                        PurchasePercentage: values.PurchasePercentage,
+                        Comments: values.Comments,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'PATCH',
+                }
+            );
             const result = await res.json();
             if (res.ok && result) {
                 resetForm();
@@ -173,7 +177,7 @@ const ViewEditPercentagePlan = (props) => {
 
 export async function getServerSideProps(context) {
     const { PercentagePlanKey } = context.query;
-    const res = await fetch(`/api/percentage-plan/${PercentagePlanKey}`);
+    const res = await fetch(prodURL + `/api/percentage-plan/${PercentagePlanKey}`);
     const percentagePlan = await res.json();
     return { props: { percentagePlan } };
 }

@@ -5,6 +5,7 @@ import { CommandBar } from '@fluentui/react';
 import Layout from '../../../components/Layout/Post';
 import PageHeader from '../../../components/PageHeader';
 import DetailsList from '../../../components/DetailsList';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const PercentagePlanListing = (props) => {
     const router = useRouter();
@@ -59,7 +60,7 @@ const PercentagePlanListing = (props) => {
                                                 method: 'DELETE',
                                             }
                                         );
-                                        let percentagePlan = await fetchData();
+                                        let percentagePlan = await fetchData('');
                                         setPercentagePlanData(percentagePlan.data);
                                     },
                                 },
@@ -117,8 +118,8 @@ const PercentagePlanListing = (props) => {
     );
 };
 
-async function fetchData() {
-    let percentagePlan = await fetch(`/api/percentage-plan`, {
+async function fetchData(prodURL) {
+    let percentagePlan = await fetch(prodURL + `/api/percentage-plan`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -130,7 +131,7 @@ async function fetchData() {
 }
 
 export async function getServerSideProps() {
-    const percentagePlan = await fetchData();
+    const percentagePlan = await fetchData(prodURL);
 
     return {
         props: {
