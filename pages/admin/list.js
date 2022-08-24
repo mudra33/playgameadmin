@@ -48,15 +48,12 @@ const AdminListing = (props) => {
                                     key: 'delete',
                                     iconProps: { iconName: 'Delete' },
                                     onClick: async () => {
-                                        await fetch(
-                                            prodURL + `/api/users/UserKey/${item.UserKey}`,
-                                            {
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                method: 'DELETE',
-                                            }
-                                        );
+                                        await fetch(`/api/users/UserKey/${item.UserKey}`, {
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            method: 'DELETE',
+                                        });
                                         let admin = await fetchData(
                                             props.session &&
                                                 props.session.user &&
