@@ -92,7 +92,7 @@ const AddAdmin = () => {
             if (res.ok && result && result.data) {
                 resetForm();
                 setNotification({ message: result.message, messageBarType: 4 });
-                router.push(prodURL + '/admin/list');
+                router.push('/admin/list');
             }
         },
     });
