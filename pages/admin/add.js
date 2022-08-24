@@ -52,7 +52,7 @@ const AddAdmin = () => {
                 ),
         }),
         onSubmit: async (values, { resetForm }) => {
-            const user = await fetch(prodURL + `/api/users`, {
+            const user = await fetch(`/api/users`, {
                 body: JSON.stringify({
                     UserPhone: values.UserPhone,
                     UserEmail: values.UserEmail,
@@ -73,7 +73,7 @@ const AddAdmin = () => {
                 return;
             }
 
-            const res = await fetch(prodURL + `/api/auth/signup`, {
+            const res = await fetch(`/api/auth/signup`, {
                 body: JSON.stringify({
                     UserRole: 'Admin',
                     UserFirstName: values.UserFirstName,
