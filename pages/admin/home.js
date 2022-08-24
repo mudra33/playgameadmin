@@ -37,7 +37,7 @@ const Home = () => {
                         padding: '30px 0 0 0',
                     }}>
                     <div className="ms-Grid-row">
-                        <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6">
                             <Dropdown
                                 placeholder="Add:"
                                 label=""
@@ -59,7 +59,7 @@ const Home = () => {
                             />
                         </div>
 
-                        <div className="ms-Grid-col ms-sm3 ms-md3 ms-lg3">
+                        <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6">
                             <Dropdown
                                 placeholder="View:"
                                 autoComplete="on"
