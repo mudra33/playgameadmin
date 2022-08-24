@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import { compare } from 'bcrypt';
 import Providers from 'next-auth/providers';
+const prodURL = process.env.NEXTAUTH_URL;
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -21,7 +22,7 @@ export default NextAuth({
 
             async authorize(credentials) {
                 try {
-                    const res = await fetch(`/api/auth/login`, {
+                    const res = await fetch(prodURL + `/api/auth/login`, {
                         method: 'POST',
                         body: JSON.stringify(credentials),
                         headers: { 'Content-Type': 'application/json' },
