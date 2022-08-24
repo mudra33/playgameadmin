@@ -6,6 +6,7 @@ import { getSession } from 'next-auth/client';
 import Layout from '../../components/Layout/Post';
 import PageHeader from '../../components/PageHeader';
 import DetailsList from '../../components/DetailsList';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const AdminListing = (props) => {
     const router = useRouter();
@@ -125,7 +126,7 @@ const AdminListing = (props) => {
 };
 
 async function fetchData(UserKey) {
-    let admin = await fetch(`/api/users?UserRole=Admin&UserKey=${UserKey}`, {
+    let admin = await fetch(prodURL + `/api/users?UserRole=Admin&UserKey=${UserKey}`, {
         headers: {
             'Content-Type': 'application/json',
         },
