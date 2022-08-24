@@ -59,7 +59,8 @@ const AdminListing = (props) => {
                                                 props.session.user &&
                                                 props.session.user.UserKey
                                                 ? props.session.user.UserKey
-                                                : ''
+                                                : '',
+                                            ''
                                         );
                                         setAdminData(admin.data);
                                     },
@@ -125,7 +126,7 @@ const AdminListing = (props) => {
     );
 };
 
-async function fetchData(UserKey) {
+async function fetchData(UserKey, prodURL) {
     let admin = await fetch(prodURL + `/api/users?UserRole=Admin&UserKey=${UserKey}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -141,7 +142,7 @@ export async function getServerSideProps(context) {
     const session = await getSession(context);
     const UserKey = session && session.user && session.user.UserKey ? session.user.UserKey : '';
 
-    const admin = await fetchData(UserKey);
+    const admin = await fetchData(UserKey, prodURL);
 
     return {
         props: {
