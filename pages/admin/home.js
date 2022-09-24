@@ -42,11 +42,11 @@ const Home = () => {
                                 placeholder="Add:"
                                 label=""
                                 options={[
-                                    { key: '/admin/store/add', text: 'Add Store' },
+                                    // { key: '/admin/store/add', text: 'Add Store' },
                                     { key: '/admin/owner/add', text: 'Add Store Owner' },
                                     { key: '/admin/add', text: 'Add Admin' },
                                     { key: '/admin/fulfilment/add', text: 'Add Fulfilment' },
-                                    { key: '/admin/sweepstakes/add', text: 'Add Sweepstakes' },
+                                    // { key: '/admin/sweepstakes/add', text: 'Add Sweepstakes' },
                                     {
                                         key: '/admin/percentage-plan/add',
                                         text: 'Add Percentage Plan',
@@ -64,11 +64,11 @@ const Home = () => {
                                 placeholder="View:"
                                 autoComplete="on"
                                 options={[
-                                    { key: '/admin/store', text: 'View All Stores' },
+                                    // { key: '/admin/store', text: 'View All Stores' },
                                     { key: '/admin/owner', text: 'View All Store Owner' },
                                     { key: '/admin', text: 'View All Admin' },
                                     { key: '/admin/fulfilment', text: 'View All Fulfilment' },
-                                    { key: '/admin/sweepstakes', text: 'View All Sweepstakes' },
+                                    // { key: '/admin/sweepstakes', text: 'View All Sweepstakes' },
                                     {
                                         key: '/admin/percentage-plan',
                                         text: 'View All Percentage Plan',
