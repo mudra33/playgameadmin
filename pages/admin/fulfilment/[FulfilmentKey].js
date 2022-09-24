@@ -11,6 +11,7 @@ import PageHeader from '../../../components/PageHeader';
 import MessageBar from '../../../components/MessageBar';
 import { ChoiceGroup, Spinner, SpinnerSize } from '@fluentui/react';
 import PrimaryButton from '../../../components/Button/PrimaryButton';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const ViewEditFulfilment = (props) => {
     const router = useRouter();
@@ -27,7 +28,11 @@ const ViewEditFulfilment = (props) => {
             router.push('/admin/fulfilment');
         }
 
-        if (props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.CompanyName)
+        if (
+            props.data.fulfilment &&
+            props.data.fulfilment.data &&
+            props.data.fulfilment.data.CompanyName
+        )
             setSelectedCompany({
                 key: props.data.fulfilment.data.CompanyKey,
                 text: props.data.fulfilment.data.CompanyName,
@@ -60,24 +65,34 @@ const ViewEditFulfilment = (props) => {
     const formik = useFormik({
         initialValues: {
             UserFirstName:
-                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserFirstName
+                props.data.fulfilment &&
+                props.data.fulfilment.data &&
+                props.data.fulfilment.data.UserFirstName
                     ? props.data.fulfilment.data.UserFirstName
                     : '',
             UserLastName:
-                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserLastName
+                props.data.fulfilment &&
+                props.data.fulfilment.data &&
+                props.data.fulfilment.data.UserLastName
                     ? props.data.fulfilment.data.UserLastName
                     : '',
             UserPhone:
-                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserPhone
+                props.data.fulfilment &&
+                props.data.fulfilment.data &&
+                props.data.fulfilment.data.UserPhone
                     ? props.data.fulfilment.data.UserPhone
                     : '',
             UserEmail:
-                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.UserEmail
+                props.data.fulfilment &&
+                props.data.fulfilment.data &&
+                props.data.fulfilment.data.UserEmail
                     ? props.data.fulfilment.data.UserEmail
                     : '',
             UserPassword: '',
             Comments:
-                props.data.fulfilment && props.data.fulfilment.data && props.data.fulfilment.data.Comments
+                props.data.fulfilment &&
+                props.data.fulfilment.data &&
+                props.data.fulfilment.data.Comments
                     ? props.data.fulfilment.data.Comments
                     : '',
         },
@@ -299,7 +314,7 @@ const ViewEditFulfilment = (props) => {
 
 export async function getServerSideProps(context) {
     const { FulfilmentKey } = context.query;
-    const res = await fetch(`/api/company-users/${FulfilmentKey}`);
+    const res = await fetch(prodURL + `/api/company-users/${FulfilmentKey}`);
     const fulfilment = await res.json();
 
     const token = await jwt.getToken({
@@ -308,7 +323,7 @@ export async function getServerSideProps(context) {
         encryption: true,
     });
 
-    let company = await fetch(`/api/company`, {
+    let company = await fetch(prodURL + `/api/company`, {
         headers: {
             'Content-Type': 'application/json',
         },

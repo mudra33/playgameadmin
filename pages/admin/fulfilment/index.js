@@ -5,6 +5,7 @@ import { CommandBar } from '@fluentui/react';
 import Layout from '../../../components/Layout/Post';
 import PageHeader from '../../../components/PageHeader';
 import DetailsList from '../../../components/DetailsList';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const FulfilmentListing = (props) => {
     const router = useRouter();
@@ -131,7 +132,7 @@ async function fetchData() {
 }
 
 export async function getServerSideProps() {
-    const fulfilment = await fetchData();
+    const fulfilment = await fetchData(prodURL);
 
     return {
         props: {
