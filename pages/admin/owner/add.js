@@ -12,6 +12,7 @@ import PageHeader from '../../../components/PageHeader';
 import PrimaryButton from '../../../components/Button/PrimaryButton';
 import DefaultButton from '../../../components/Button/DefaultButton';
 import { Spinner, SpinnerSize } from '@fluentui/react';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const AddOwner = (props) => {
     const router = useRouter();
@@ -142,7 +143,9 @@ const AddOwner = (props) => {
                             <MessageBar
                                 message={notification.message}
                                 messageBarType={notification.messageBarType}
-                                onDismiss={() => setNotification({ message: '', messageBarType: null })}
+                                onDismiss={() =>
+                                    setNotification({ message: '', messageBarType: null })
+                                }
                             />
                         ) : (
                             ''
@@ -154,7 +157,11 @@ const AddOwner = (props) => {
                                     style={{
                                         marginLeft: '10px',
                                     }}>
-                                    <Dropdown options={StoreName} onChange={onDropdownChange} label="Store Name:" />
+                                    <Dropdown
+                                        options={StoreName}
+                                        onChange={onDropdownChange}
+                                        label="Store Name:"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -235,8 +242,16 @@ const AddOwner = (props) => {
                             <div className="ms-Grid-col ms-sm6">
                                 <PrimaryButton
                                     type="submit"
-                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
-                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
+                                    text={
+                                        formik.isSubmitting ? (
+                                            <Spinner size={SpinnerSize.xSmall} />
+                                        ) : (
+                                            'Submit'
+                                        )
+                                    }
+                                    disabled={
+                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
+                                    }
                                 />
                             </div>
                         </div>
@@ -253,7 +268,7 @@ export async function getServerSideProps({ req }) {
         secret: process.env.JWT_SECRET,
         encryption: true,
     });
-    let store = await fetch(`/api/store`, {
+    let store = await fetch(prodURL + `/api/store`, {
         headers: {
             'Content-Type': 'application/json',
         },
