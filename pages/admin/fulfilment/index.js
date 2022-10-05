@@ -54,7 +54,14 @@ const FulfilmentListing = (props) => {
                                             },
                                             method: 'DELETE',
                                         });
-                                        let fulfilment = await fetchData();
+                                        let fulfilment = await fetchData(
+                                            props.session &&
+                                                props.session.user &&
+                                                props.session.user.UserKey
+                                                ? props.session.user.UserKey
+                                                : '',
+                                            ''
+                                        );
                                         setFulfilmentData(fulfilment.data);
                                     },
                                 },
@@ -119,15 +126,27 @@ const FulfilmentListing = (props) => {
     );
 };
 
-async function fetchData(prodURL) {
-    let fulfilment = await fetch(prodURL + `/api/users?UserRole=Fulfilment`, {
+// async function fetchData(prodURL) {
+//     let fulfilment = await fetch(prodURL + `/api/users?UserRole=Fulfilment`, {
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         method: 'GET',
+//     });
+//     fulfilment = await fulfilment.json();
+
+//     return fulfilment;
+// }
+
+async function fetchData(UserKey, prodURL) {
+    let fulfilment = await fetch(prodURL + `/api/users?UserRole=Fulfilment&UserKey=${UserKey}`, {
         headers: {
             'Content-Type': 'application/json',
         },
         method: 'GET',
     });
-    fulfilment = await fulfilment.json();
 
+    fulfilment = await fulfilment.json();
     return fulfilment;
 }
 
