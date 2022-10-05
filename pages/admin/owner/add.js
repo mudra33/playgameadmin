@@ -16,7 +16,11 @@ const prodURL = process.env.NEXTAUTH_URL;
 
 const AddOwner = (props) => {
     const router = useRouter();
-    const StoreName = [{ text: '', key: '' }];
+    const StoreName = [
+        { text: 'Store1', key: 'Store1' },
+        { text: 'Store2', key: 'Store2' },
+        { text: 'Store3', key: 'Store3' },
+    ];
     const [notification, setNotification] = useState({
         message: '',
         messageBarType: '',

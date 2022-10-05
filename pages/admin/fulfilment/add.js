@@ -12,6 +12,7 @@ import PrimaryButton from '../../../components/Button/PrimaryButton';
 import DefaultButton from '../../../components/Button/DefaultButton';
 import ComboBox from '../../../components/ComboBox';
 import { Spinner, SpinnerSize } from '@fluentui/react';
+const prodURL = process.env.NEXTAUTH_URL;
 
 const AddFulfilment = (props) => {
     const router = useRouter();
@@ -214,7 +215,8 @@ const AddFulfilment = (props) => {
                                         label="Last Name"
                                         {...formik.getFieldProps('UserLastName')}
                                         errorMessage={
-                                            formik.touched.UserLastName && formik.errors.UserLastName
+                                            formik.touched.UserLastName &&
+                                            formik.errors.UserLastName
                                                 ? formik.errors.UserLastName
                                                 : null
                                         }
@@ -287,8 +289,16 @@ const AddFulfilment = (props) => {
                             <div className="ms-Grid-col ms-sm6">
                                 <PrimaryButton
                                     type="submit"
-                                    text={formik.isSubmitting ? <Spinner size={SpinnerSize.xSmall} /> : 'Submit'}
-                                    disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting}
+                                    text={
+                                        formik.isSubmitting ? (
+                                            <Spinner size={SpinnerSize.xSmall} />
+                                        ) : (
+                                            'Submit'
+                                        )
+                                    }
+                                    disabled={
+                                        !(formik.isValid && formik.dirty) || formik.isSubmitting
+                                    }
                                 />
                             </div>
                         </div>
@@ -306,7 +316,7 @@ export async function getServerSideProps({ req }) {
         encryption: true,
     });
 
-    let company = await fetch(`/api/company`, {
+    let company = await fetch(prodURL + `/api/company`, {
         headers: {
             'Content-Type': 'application/json',
         },
