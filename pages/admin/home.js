@@ -66,7 +66,7 @@ const Home = () => {
                                 options={[
                                     // { key: '/admin/store', text: 'View All Stores' },
                                     { key: '/admin/owner', text: 'View All Store Owner' },
-                                    { key: '/admin', text: 'View All Admin' },
+                                    { key: '/admin/list', text: 'View All Admin' },
                                     { key: '/admin/fulfilment', text: 'View All Fulfilment' },
                                     // { key: '/admin/sweepstakes', text: 'View All Sweepstakes' },
                                     {
