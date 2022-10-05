@@ -119,8 +119,8 @@ const FulfilmentListing = (props) => {
     );
 };
 
-async function fetchData() {
-    let fulfilment = await fetch(`/api/users?UserRole=Fulfilment`, {
+async function fetchData(prodURL) {
+    let fulfilment = await fetch(prodURL + `/api/users?UserRole=Fulfilment`, {
         headers: {
             'Content-Type': 'application/json',
         },
